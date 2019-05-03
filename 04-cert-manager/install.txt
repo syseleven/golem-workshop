@@ -1,0 +1,4 @@
+kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.7/deploy/manifests/00-crds.yaml
+helm --namespace cert-manager -f cert-manager.yaml --name cert-manager stable/cert-manager
+kubectl create -f clusterissuer.yaml
+kubectl create -f route53-credentials-secret.yaml
