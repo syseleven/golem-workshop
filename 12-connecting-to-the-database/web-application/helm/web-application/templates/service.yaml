@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "web-application.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "web-application.name" . }}
+    helm.sh/chart: {{ include "web-application.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    workshop: workshop
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "web-application.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

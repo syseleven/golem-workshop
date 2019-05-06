@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: quote-svc
+  labels:
+    app: quote-svc
+    workshop: workshop
+spec:
+  type: ClusterIP
+  ports:
+    -
+      name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: quote-svc

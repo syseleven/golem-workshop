@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: web-application
+  labels:
+    app: web-application
+    workshop: workshop
+spec:
+  selector:
+    matchLabels:
+      app: web-application
+  template:
+    metadata:
+      labels:
+        app: web-application
+        workshop: workshop
+    spec:
+      containers:
+        - name: web-application
+          image: bashofmann/k8s-workshop-web-application:1.0.0
+          ports:
+            - containerPort: 80
+              name: http

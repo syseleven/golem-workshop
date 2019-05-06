@@ -1,0 +1,19 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: web-application
+  labels:
+    app: web-application
+    workshop: workshop
+spec:
+  tls:
+    - hosts:
+        - web-application-<YOURNAME>.workshop.plgrnd.be
+  rules:
+    - host: web-application-<YOURNAME>.workshop.plgrnd.be
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web-application
+              servicePort: 80

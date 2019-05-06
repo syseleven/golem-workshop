@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-svc
+  labels:
+    app: hello-svc
+    workshop: workshop
+spec:
+  type: ClusterIP
+  ports:
+    -
+      name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: hello-svc
