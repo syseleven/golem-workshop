@@ -2,7 +2,7 @@
 
 * Create cronjob
 ```
-kubectl apply -f 02-cronjob/cronjob.yaml
+kubectl apply -f cronjob.yaml
 ```
 * See Status of CronJob
 ```
@@ -18,5 +18,5 @@ kubectl describe jobs
 ```
 kubectl get pods
 kubectl describe pods
-kubectl logs hello-job-podname
+kubectl logs <HELLO_JOBPOD_NAME>
 ```

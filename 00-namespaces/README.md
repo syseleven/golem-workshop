@@ -1,6 +1,7 @@
 ## 0. Set up a namespace
 * Download kubeconfig
 * Copy kubeconfig to `~/.kube/config`
+* Install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 * Try connection
 ```
 kubectl get version

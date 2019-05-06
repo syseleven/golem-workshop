@@ -8,9 +8,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - web-application-<YOURNAME>.workshop.plgrnd.be
+        - web-application-<YOURNAME>.plgrnd.be
   rules:
-    - host: web-application-<YOURNAME>.workshop.plgrnd.be
+    - host: web-application-<YOURNAME>.plgrnd.be
       http:
         paths:
           - path: /
