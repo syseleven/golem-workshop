@@ -9,5 +9,5 @@ helm repo update
 * Change `txtOwnerId` in values.yaml
 * Install external-dns with Helm
 ```
-helm install --name external-dns --namespace=external-dns -f values.yaml stable/external-dns
+helm upgrade --install external-dns --namespace=external-dns -f values.yaml stable/external-dns
 ```
