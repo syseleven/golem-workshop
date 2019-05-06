@@ -1,3 +1,0 @@
-helm install stable/elasticsearch --namespace elastic-stack --name elasticsearch -f elasticsearch/values.yaml --set data.terminationGracePeriodSeconds=0
-helm install --name fluentd --namespace elastic-stack -f fluentd-elasticsearch/values.yaml stable/fluentd-elasticsearch
-helm install --name kibana --namespace elastic-stack stable/kibana -f kibana/values.yaml

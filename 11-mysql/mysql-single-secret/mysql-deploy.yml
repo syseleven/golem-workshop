@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: mysql-svc
   labels:
-    app: mysql-app 
+    app: mysql-app
 spec:
   ports:
     - port: 3306
@@ -18,7 +18,10 @@ metadata:
   labels:
     app: mysql-app
 spec:
+<<<<<<< HEAD
   storageClassName: sys11-quobyte 
+=======
+>>>>>>> 76ca331b4a4c1ad4152bb99ba8f97d37c570d662
   accessModes:
   - ReadWriteOnce
   resources:
@@ -40,7 +43,11 @@ spec:
         app: mysql-app
     spec:
       containers:
+<<<<<<< HEAD
       - image: mysql:5.7 
+=======
+      - image: percona
+>>>>>>> 76ca331b4a4c1ad4152bb99ba8f97d37c570d662
         args:
           - "--ignore-db-dir=lost+found"
         name: mysql
@@ -49,8 +56,8 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-secrets
-              key: mysql-root-password 
-        - name: MYSQL_DATABASE 
+              key: mysql-root-password
+        - name: MYSQL_DATABASE
           valueFrom:
             secretKeyRef:
               name: mysql-secrets

@@ -1,9 +1,10 @@
 local kp =
-  (import 'kube-prometheus/kube-prometheus.libsonnet') + {
+  (import 'kube-prometheus/kube-prometheus.libsonnet') +
+  (import 'kube-prometheus/kube-prometheus-managed-cluster.libsonnet') + {
     _config+:: {
       namespace: 'monitoring',
       prometheus+:: {
-        namespaces+: ['ingress-nginx'],
+        namespaces+: ['nginx-ingress', 'web-application'],
       },
     },
     grafanaDashboards+:: {
@@ -17,5 +18,4 @@ local kp =
 { ['kube-state-metrics-' + name]: kp.kubeStateMetrics[name] for name in std.objectFields(kp.kubeStateMetrics) } +
 { ['alertmanager-' + name]: kp.alertmanager[name] for name in std.objectFields(kp.alertmanager) } +
 { ['prometheus-' + name]: kp.prometheus[name] for name in std.objectFields(kp.prometheus) } +
-{ ['grafana-' + name]: kp.grafana[name] for name in std.objectFields(kp.grafana) } +
-{ ['ingress-' + name]: kp.ingress[name] for name in std.objectFields(kp.ingress) }
+{ ['grafana-' + name]: kp.grafana[name] for name in std.objectFields(kp.grafana) }

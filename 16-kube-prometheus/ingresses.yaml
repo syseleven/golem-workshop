@@ -1,0 +1,53 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - prometheus-<YOURNAME>.plgrnd.be
+  rules:
+    - host: prometheus-<YOURNAME>.plgrnd.be
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: prometheus-k8s
+              servicePort: 9090
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - grafana-<YOURNAME>.plgrnd.be
+  rules:
+    - host: grafana-<YOURNAME>.plgrnd.be
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: grafana
+              servicePort: 3000
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: alertmanager
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - alertmanager-<YOURNAME>.plgrnd.be
+  rules:
+    - host: alertmanager-<YOURNAME>.plgrnd.be
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: alertmanager-main
+              servicePort: 9093
