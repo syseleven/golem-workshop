@@ -16,7 +16,7 @@ provider: digitalocean
 
 # DigitalOcean API token to inject as environment variable
 digitalocean:
-  apiToken: ""
+  apiToken: "XXXX"
 
 rfc2136:
   host: ""

@@ -1,3 +1,4 @@
+---
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: ClusterIssuer
 metadata:
@@ -7,8 +8,8 @@ spec:
     # The ACME server URL
     server: https://acme-v02.api.letsencrypt.org/directory
     # Email address used for ACME registration
-    email: mail@bastianhofmann.de
-    # Name of a secret used to store the ACME account private key
+    email: admin@metakube.de 
+   # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
       name: letsencrypt-prod
     dns01:

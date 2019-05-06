@@ -9,4 +9,4 @@ ingressShim:
   defaultIssuerName: "letsencrypt-prod"
   defaultIssuerKind: "ClusterIssuer"
   defaultACMEChallengeType: "dns01"
-  defaultACMEDNS01ChallengeProvider: "route53" 
+  defaultACMEDNS01ChallengeProvider: "digitalocean" 
