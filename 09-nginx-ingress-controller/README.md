@@ -2,5 +2,5 @@
 
 * Install nginx ingress controller:
 ```
-helm install -f values.yaml --namespace nginx-ingress --name nginx-ingress stable/nginx-ingress
+helm upgrade --install -f values.yaml --namespace nginx-ingress nginx-ingress stable/nginx-ingress
 ```

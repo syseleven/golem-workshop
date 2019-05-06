@@ -14,8 +14,8 @@ helm upgrade --install --namespace cert-manager -f cert-manager.yaml cert-manage
 
 * Create ClusterIssuer
 ```
-kubectl create -f digitalocean-dns-secret.yaml
-kubectl create -f clusterissuer-digitalocean.yaml
+kubectl apply -f digitalocean-dns-secret.yaml
+kubectl apply -f clusterissuer-digitalocean.yaml
 ```
 
 * Change hostnames in `certificate.yaml`
