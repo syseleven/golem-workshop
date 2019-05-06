@@ -1,0 +1,5 @@
+mysql:
+   user: root
+   pass: Pho5weePh9Rah7ae
+   host: mysql-svc
+   port: 3306

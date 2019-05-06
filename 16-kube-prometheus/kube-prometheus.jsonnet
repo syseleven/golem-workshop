@@ -9,6 +9,7 @@ local kp =
     },
     grafanaDashboards+:: {
       'nginx-ingress.json': (import 'dashboards/nginx-ingress.json'),
+      'mysql.json': (import 'dashboards/mysql.json'),
     },
   };
 

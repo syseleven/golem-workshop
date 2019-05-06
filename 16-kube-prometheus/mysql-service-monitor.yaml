@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+    prometheus: k8s
+  namespace: monitoring
+spec:
+  endpoints:
+    - interval: 30s
+      scrapeTimeout: 30s
+      port: mysql-exporter
+      path: /metrics
+  namespaceSelector:
+    matchNames:
+      - web-application
+  selector:
+    matchLabels:
+      app: prometheus-mysql-exporter

@@ -63,6 +63,9 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/k8s-resources-workloads-namespace
           name: grafana-dashboard-k8s-resources-workloads-namespace
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/mysql
+          name: grafana-dashboard-mysql
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/nginx-ingress
           name: grafana-dashboard-nginx-ingress
           readOnly: false
@@ -114,6 +117,9 @@ spec:
       - configMap:
           name: grafana-dashboard-k8s-resources-workloads-namespace
         name: grafana-dashboard-k8s-resources-workloads-namespace
+      - configMap:
+          name: grafana-dashboard-mysql
+        name: grafana-dashboard-mysql
       - configMap:
           name: grafana-dashboard-nginx-ingress
         name: grafana-dashboard-nginx-ingress

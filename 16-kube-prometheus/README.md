@@ -24,3 +24,11 @@ kubectl apply -f ingresses.yaml
 ```
 kubectl apply -f nginx-ingress-service-monitor.yaml
 ```
+* Install mysql-exporter
+```
+helm upgrade --install mysql-exporter stable/prometheus-mysql-exporter -f mysql-exporter.yaml --namespace web-application
+```
+* Add ServiceMonitor for mysql-exporter
+```
+kubectl apply -f mysql-service-monitor.yaml
+```
