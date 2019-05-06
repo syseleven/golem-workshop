@@ -48,3 +48,6 @@ securityContext:
    runAsUser: 65534 # 65534 is nobody - revise aws.credentialsPath when changing uid
    capabilities:
      drop: ["ALL"]
+
+rbac:
+  create: true
