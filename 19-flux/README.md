@@ -1,3 +1,7 @@
+# Ensure that the service endpoint tiller-deploy is there otherwise
+kubectl -n kube-system get svc
+helm init --skip-refresh --upgrade --service-account tiller
+
 # Add weaveworks repo to helm and update
 
 helm repo add weaveworks https://weaveworks.github.io/flux
