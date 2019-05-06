@@ -18,7 +18,7 @@ metadata:
   labels:
     app: mysql-app
 spec:
-  storageClassName: generic 
+  storageClassName: sys11-quobyte 
   accessModes:
   - ReadWriteOnce
   resources:
@@ -40,7 +40,7 @@ spec:
         app: mysql-app
     spec:
       containers:
-      - image: percona 
+      - image: mysql:5.7 
         args:
           - "--ignore-db-dir=lost+found"
         name: mysql

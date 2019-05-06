@@ -2,16 +2,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: mysql-app
+  name: mysql-app-env
   labels:
-    app: mysql
+    app: mysql-env
 spec:
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: mysql
+        app: mysql-env
     spec:
       containers:
       - image: mysql:5.7
@@ -29,7 +29,7 @@ spec:
           value: "changeme"
         ports:
         - containerPort: 3306
-          name: mysql
+          name: mysql-env
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql

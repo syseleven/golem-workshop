@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-svc
+  name: mysql-svc-env
   labels:
-    app: mysql
+    app: mysql-env
 spec:
   ports:
     - port: 3306
   selector:
-    app: mysql
+    app: mysql-env
   clusterIP: None
