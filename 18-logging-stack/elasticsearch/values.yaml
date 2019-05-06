@@ -113,7 +113,6 @@ master:
     accessMode: ReadWriteOnce
     name: data
     size: "6Gi"
-    storageClass: "sys11-aws"
   antiAffinity: "soft"
   nodeAffinity: {}
   nodeSelector: {}
@@ -146,7 +145,6 @@ data:
     accessMode: ReadWriteOnce
     name: data
     size: "35Gi"
-    storageClass: "sys11-aws"
   terminationGracePeriodSeconds: 3600
   antiAffinity: "soft"
   nodeAffinity: {}
