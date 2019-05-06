@@ -16,7 +16,7 @@ provider: digitalocean
 
 # DigitalOcean API token to inject as environment variable
 digitalocean:
-  apiToken: "XXXX"
+  apiToken: "<API_TOKEN>"
 
 rfc2136:
   host: ""
@@ -40,14 +40,14 @@ interval: "1m"
 registry: "txt"
 
 # When using the TXT registry, a name that identifies this instance of ExternalDNS
-txtOwnerId: "placeholder"
+txtOwnerId: "<OWNER_ID>"
 
 ## Modify how DNS records are sychronized between sources and providers (options: sync, upsert-only )
 policy: sync
 
 
 ## CPU and Memory limit and request for external-dns
-resources: 
+resources:
   limits:
     memory: 50Mi
   requests:
@@ -65,7 +65,7 @@ rbac:
   ##
   serviceAccountName: default
 
-securityContext: 
+securityContext:
    readOnlyRootFilesystem: true
    runAsNonRoot: true
    runAsUser: 65534 # 65534 is nobody - revise aws.credentialsPath when changing uid

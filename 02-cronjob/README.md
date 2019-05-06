@@ -18,5 +18,5 @@ kubectl describe jobs
 ```
 kubectl get pods
 kubectl describe pods
-kubectl logs hello-job-podname
+kubectl logs <HELLO_JOBPOD_NAME>
 ```

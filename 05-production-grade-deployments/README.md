@@ -12,7 +12,7 @@ kubectl describe pods
 * Label Nodes
 ```
 kubectl get nodes
-kubectl label nodes <NODE_NAME> storagetype=network 
+kubectl label nodes --all storagetype=network 
 ```
 * See that pods are schedules
 ```
@@ -29,4 +29,12 @@ kubectl top pods
 ```
 watch kubectl get pods
 ab -c 100 -n 1000 http://<IP_ADDRESS>/
+```
+* Remove autoscaler
+```
+kubectl delete horizontalpodautoscalers.autoscaling web-application
+```
+* Scale deployment down again
+```
+kubectl scale deployment web-application --replicas 2
 ```
