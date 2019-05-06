@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: mem-limit-range
+  name: pod-mem-limit-range
 spec:
   limits:
   - default:
