@@ -19,6 +19,12 @@ controller:
   # to keep resolving names inside the k8s network, use ClusterFirstWithHostNet.
   dnsPolicy: ClusterFirst
 
+  publishService:
+    enabled: true
+
+  extraArgs:
+    default-ssl-certificate: default/plgrnd-all
+
   ## Use host ports 80 and 443
   daemonset:
     useHostPort: false
@@ -54,7 +60,7 @@ controller:
 
   # The update strategy to apply to the Deployment or DaemonSet
   ##
-  updateStrategy: 
+  updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
     type: RollingUpdate
@@ -85,7 +91,7 @@ controller:
 
   minAvailable: 1
 
-  resources: 
+  resources:
     limits:
       cpu: 500m
       memory: 512Mi
@@ -136,7 +142,7 @@ controller:
     enabled: true
 
     service:
-      annotations: 
+      annotations:
         prometheus.io/scrape: "true"
       # prometheus.io/port: "10254"
 
@@ -178,7 +184,7 @@ defaultBackend:
 
   minAvailable: 0
 
-  resources: 
+  resources:
    limits:
      cpu: 10m
      memory: 20Mi
