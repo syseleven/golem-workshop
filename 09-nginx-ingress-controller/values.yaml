@@ -23,7 +23,7 @@ controller:
     enabled: true
 
   extraArgs:
-    default-ssl-certificate: default/plgrnd-all
+    default-ssl-certificate: default/plgrnd-tls-certs
 
   ## Use host ports 80 and 443
   daemonset:
