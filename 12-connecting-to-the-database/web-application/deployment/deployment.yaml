@@ -36,9 +36,13 @@ spec:
         storagetype: network
       containers:
         - name: web-application
-          image: bashofmann/k8s-workshop-web-application:7.0.0
+          image: bashofmann/k8s-workshop-web-application:7.0.1
           imagePullPolicy: Always
           env:
+            - name: DB_HOST
+              value: mysql-svc
+            - name: DB_USER
+              value: root
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
