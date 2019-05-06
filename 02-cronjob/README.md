@@ -2,7 +2,7 @@
 
 * Create cronjob
 ```
-kubectl apply -f 02-cronjob/cronjob.yaml
+kubectl apply -f cronjob.yaml
 ```
 * See Status of CronJob
 ```

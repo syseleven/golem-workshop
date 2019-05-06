@@ -36,7 +36,7 @@ spec:
         storagetype: network
       containers:
         - name: web-application
-          image: bashofmann/k8s-workshop-web-application:3.0.0
+          image: bashofmann/k8s-workshop-web-application:6.0.0
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
