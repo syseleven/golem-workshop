@@ -22,9 +22,9 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           value: "changeme"
         - name: MYSQL_DATABASE
-          value: "syseleven"
+          value: "golem"
         - name: MYSQL_USER
-          value: "shopware"
+          value: "golem"
         - name: MYSQL_PASSWORD
           value: "changeme"
         ports:
