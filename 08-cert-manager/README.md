@@ -7,14 +7,14 @@ kubectl create namespace cert-manager
 kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
 helm repo add jetstack https://charts.jetstack.io
 helm repo update
-helm install --namespace cert-manager -f cert-manager.yaml --name cert-manager jetstack/cert-manager
+helm upgrade --install --namespace cert-manager -f cert-manager.yaml cert-manager jetstack/cert-manager
 ```
 
 * Add DigitalOcean API Token to `digitalocean-dns-secret.yaml`
 
 * Create ClusterIssuer
 ```
-kubectl create -f digitialocean-dns-secret.yaml
+kubectl create -f digitalocean-dns-secret.yaml
 kubectl create -f clusterissuer-digitalocean.yaml
 ```
 
