@@ -4,7 +4,7 @@
 * Install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 * Try connection
 ```
-kubectl get version
+kubectl version
 ```
 * List Namespaces
 ```
