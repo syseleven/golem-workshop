@@ -27,8 +27,18 @@ brew install fluxctl
 
 # fluxctl client commands
 
+# show running controllers
+
 fluxctl --k8s-fwd-ns flux list-controllers -a
 
+# fetch ssh pub key from flux
+
 fluxctl identity --k8s-fwd-ns flux
+
+# force sync from git repo
+
+fluxctl sync --k8s-fwd-ns flux
+
+# automate nginx ingress deployment
 
 fluxctl --k8s-fwd-ns flux automate --controller=nginx-ingress:deployment/nginx-ingress-controller
