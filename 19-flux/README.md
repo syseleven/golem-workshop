@@ -41,4 +41,4 @@ fluxctl sync --k8s-fwd-ns flux
 
 # automate nginx ingress deployment
 
-fluxctl --k8s-fwd-ns flux automate --controller=nginx-ingress:deployment/nginx-ingress-controller
+fluxctl --k8s-fwd-ns flux automate --workspace=webapp:deployment/webapp
