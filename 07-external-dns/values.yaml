@@ -32,7 +32,7 @@ registry: "txt"
 txtOwnerId: "<OWNER_ID>"
 
 ## Modify how DNS records are sychronized between sources and providers (options: sync, upsert-only )
-policy: sync
+policy: upsert-only
 
 ## CPU and Memory limit and request for external-dns
 resources:
