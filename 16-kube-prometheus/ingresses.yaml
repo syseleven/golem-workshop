@@ -6,9 +6,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - prometheus-<YOURNAME>.plgrnd.be
+        - prometheus.<YOUR_NAME>.plgrnd.be
   rules:
-    - host: prometheus-<YOURNAME>.plgrnd.be
+    - host: prometheus.<YOUR_NAME>.plgrnd.be
       http:
         paths:
           - path: /
@@ -24,9 +24,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - grafana-<YOURNAME>.plgrnd.be
+        - grafana.<YOUR_NAME>.plgrnd.be
   rules:
-    - host: grafana-<YOURNAME>.plgrnd.be
+    - host: grafana.<YOUR_NAME>.plgrnd.be
       http:
         paths:
           - path: /
@@ -42,9 +42,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - alertmanager-<YOURNAME>.plgrnd.be
+        - alertmanager.<YOUR_NAME>.plgrnd.be
   rules:
-    - host: alertmanager-<YOURNAME>.plgrnd.be
+    - host: alertmanager.<YOUR_NAME>.plgrnd.be
       http:
         paths:
           - path: /

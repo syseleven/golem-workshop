@@ -6,9 +6,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - linkerd-dashboard-<YOURNAME>.plgrnd.be
+        - linkerd-dashboard.<YOUR_NAME>.plgrnd.be
   rules:
-    - host: linkerd-dashboard-<YOURNAME>.plgrnd.be
+    - host: linkerd-dashboard.<YOUR_NAME>.plgrnd.be
       http:
         paths:
           - path: /

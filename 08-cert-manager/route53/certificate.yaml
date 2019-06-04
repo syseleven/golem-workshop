@@ -2,19 +2,19 @@
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
-  name: plgrnd-all
+  name: unipig-all
   namespace: default 
 spec:
   acme:
     config:
     - domains:
-      - '*.plgrnd.be'
+      - '*.<YOUR_NAME>.plgrnd.be'
       dns01:
-        provider: digitalocean
+        provider: route53
   commonName: ""
   dnsNames:
-      - '*.plgrnd.be'
-  secretName: plgrnd-tls-certs 
+      - '*.<YOUR_NAME>.plgrnd.be'
+  secretName: unipig-tls-certs 
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
