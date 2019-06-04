@@ -1,0 +1,31 @@
+---
+apiVersion: mysql.presslabs.org/v1alpha1
+kind: MysqlCluster
+metadata:
+  name: db
+spec:
+  replicas: 2
+  secretName: mysql-secret
+  mysqlVersion: "5.7"
+  minAvailable: "50%"
+
+## Configs that will be added to my.cnf for cluster
+  mysqlConf:
+    max_connections: "200"
+    innodb-buffer-pool-size: "256M"
+    tmp_table_size: 256M
+    max_heap_table_size: 256M
+
+  podSpec:
+    resources:
+      requests:
+        memory: 1G
+        cpu:    200m
+
+## Specify additional volume specification
+  volumeSpec:
+    persistentVolumeClaim:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
