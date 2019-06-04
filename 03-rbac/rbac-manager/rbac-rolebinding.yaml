@@ -1,0 +1,20 @@
+---
+apiVersion: rbacmanager.reactiveops.io/v1beta1
+kind: RBACDefinition
+metadata:
+  name: simon-access
+rbacBindings:
+  - name: simon
+    subjects:
+      - kind: ServiceAccount
+        name: simon
+        namespace: default
+    roleBindings:
+      - namespace: dev
+        clusterRole: edit
+      - namespace: kube-system
+        clusterRole: view
+      - clusterRole: edit
+        namespaceSelector:
+          matchLabels:
+            app: prod

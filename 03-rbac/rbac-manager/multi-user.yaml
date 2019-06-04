@@ -1,0 +1,40 @@
+apiVersion: rbacmanager.reactiveops.io/v1beta1
+kind: RBACDefinition
+metadata:
+  name: rbac-manager-users-example
+rbacBindings:
+  - name: cluster-admins
+    subjects:
+      - kind: User
+        name: jane@example.com
+    clusterRoleBindings:
+      - clusterRole: cluster-admin
+  - name: web-developers
+    subjects:
+      - kind: User
+        name: dave@example.com
+      - kind: User
+        name: joe@example.com
+    roleBindings:
+      - clusterRole: edit
+        namespace: web
+      - clusterRole: view
+        namespace: api
+  - name: ci-bot
+    subjects:
+      - kind: ServiceAccount
+        name: ci-bot
+        namespace: rbac-manager
+    roleBindings:
+      - clusterRole: edit
+        namespaceSelector:
+          matchLabels:
+            ci: edit
+      - clusterRole: admin
+        namespaceSelector:
+          matchExpressions:
+            - key: app
+              operator: In
+              values:
+                - web
+                - queue

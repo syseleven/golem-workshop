@@ -1,0 +1,12 @@
+apiVersion: rbacmanager.reactiveops.io/v1beta1
+kind: RBACDefinition
+metadata:
+  name: simon-cluster-role
+rbacBindings:
+  - name: cluster-admins
+    subjects:
+      - kind: ServiceAccount
+        name: simon
+        namespace: default
+    clusterRoleBindings:
+      - clusterRole: cluster-admin
