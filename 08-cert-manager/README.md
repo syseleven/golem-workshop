@@ -49,6 +49,3 @@ kubectl apply -f route53/clusterissuer.yaml
 ```
 kubectl apply -f route53/certificate.yaml
 ```
-
-
-

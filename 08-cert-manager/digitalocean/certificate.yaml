@@ -3,7 +3,7 @@ apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
   name: plgrnd-all
-  namespace: default 
+  namespace: default
 spec:
   acme:
     config:
@@ -14,7 +14,7 @@ spec:
   commonName: ""
   dnsNames:
       - '*.<YOUR_NAME>.plgrnd.be'
-  secretName: plgrnd-tls-certs 
+  secretName: plgrnd-tls-certs
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
