@@ -4,7 +4,12 @@ const promBundle = require("express-prom-bundle");
 
 const app = express();
 const metricsMiddleware = promBundle({includeMethod: true});
-
+const Prometheus = metricsMiddleware.promClient;
+const quotesTotal = new Prometheus.Counter({
+  name: 'quote_fetches_total',
+  help: 'Total number of quotes',
+  labelNames: []
+});
 app.use(metricsMiddleware);
 
 app.get('/health', (req, res) => {
@@ -14,7 +19,8 @@ app.get('/health', (req, res) => {
 app.get('/quote', (req, res) => {
     randomQuote()
         .then(quote => {
-            quote[0].title = quote[0].title.toUpperCase();
+          quotesTotal.inc();
+          quote[0].title = quote[0].title.toUpperCase();
             res.send(quote);
         })
         .catch(err => res.send(err));
