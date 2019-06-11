@@ -1,44 +1,69 @@
-# Ensure that the service endpoint tiller-deploy is there otherwise
-kubectl -n kube-system get svc
-helm init --skip-refresh --upgrade --service-account tiller
-
 # Add weaveworks repo to helm and update
 
+```
 helm repo add weaveworks https://weaveworks.github.io/flux
 helm repo up
+````
 
-# Create ssh key pair and add to secret
-
-ssh-keygen -q -N "" -f ./identity
-kubectl create ns flux
-kubectl -n flux create secret generic helm-ssh --from-file=./identity
 
 # Install crd definitions
 
+````
 kubectl apply -f https://raw.githubusercontent.com/weaveworks/flux/master/deploy-helm/flux-helm-release-crd.yaml
+````
 
-# Install flux operator
+# Create github repo
 
-helm install --name flux --namespace flux --set git.url=git@github.com:simon-k8s/flux-deployment --namespace flux --set git.secretName=helm-ssh --set helmOperator.create=true --set helmOperator.createCRD=false weaveworks/flux
+Name: `flux-state`
+
+# Install flux operator for stage
+
+````
+kubectl create namespace stage
+helm upgrade --install flux-stage --namespace flux-stage --set git.url=git@github.com:bashofmann/flux-state --set git.path=stage --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=stage weaveworks/flux
+````
 
 # Install flux client for Mac with brew
 
+````
 brew install fluxctl
+````
+
+# fetch ssh pub key from flux and add it to github
+
+```
+fluxctl identity --k8s-fwd-ns flux-stage
+```
+
+Open GitHub, navigate to your fork, go to Setting > Deploy keys, click on Add deploy key, give it a Title, check Allow write access, paste the Flux public key and click Add key.
+
+# Install flux operator for prod
+
+````
+kubectl create namespace prod
+helm upgrade --install flux-prod --namespace flux-prod --set git.url=git@github.com:bashofmann/flux-state --set git.path=prod --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=prod weaveworks/flux
+````
+
+# fetch ssh pub key from flux and add it to github
+
+```
+fluxctl identity --k8s-fwd-ns flux-prod
+```
 
 # fluxctl client commands
 
 # show running controllers
 
-fluxctl --k8s-fwd-ns flux list-controllers -a
+fluxctl --k8s-fwd-ns flux-stage list-controllers -a
 
 # fetch ssh pub key from flux
 
-fluxctl identity --k8s-fwd-ns flux
+fluxctl --k8s-fwd-ns flux-stage identity
 
 # force sync from git repo
 
-fluxctl sync --k8s-fwd-ns flux
+fluxctl --k8s-fwd-ns flux-stage sync
 
 # automate nginx ingress deployment
 
-fluxctl --k8s-fwd-ns flux automate --workspace=webapp:deployment/webapp
+fluxctl --k8s-fwd-ns flux-stage automate --workspace=webapp:deployment/webapp
