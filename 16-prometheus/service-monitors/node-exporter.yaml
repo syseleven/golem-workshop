@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-exporter
+  labels:
+    app: node-exporter
+  namespace: kube-system
+spec:
+  ports:
+    - name: scrape
+      port: 9100
+      targetPort: scrape
+  selector:
+    app: node-exporter
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: node-exporter
+  labels:
+    app: node-exporter
+    release: prom
+  namespace: monitoring
+spec:
+  endpoints:
+    - interval: 30s
+      scrapeTimeout: 30s
+      port: scrape
+      path: /metrics
+  namespaceSelector:
+    matchNames:
+      - kube-system
+  selector:
+    matchLabels:
+      app: node-exporter
+

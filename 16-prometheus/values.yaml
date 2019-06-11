@@ -1,0 +1,64 @@
+# Depending on which DNS solution you have installed in your cluster enable the right exporter
+coreDns:
+  enabled: true
+
+kubeDns:
+  enabled: false
+
+# The kube-controller-manager and kube-scheduler are managed and monitored by MetaKube itself
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+    replicas: 2
+    podAntiAffinity: hard
+
+prometheus:
+  prometheusSpec:
+    retention: 4h
+    ruleSelector: {}
+    replicas: 1
+    podAntiAffinity: hard
+  ingress:
+    enabled: true
+    hosts:
+      - prometheus.<DOMAINNAME>.plgrnd.be
+    tls:
+      - hosts:
+          - prometheus.<DOMAINNAME>.plgrnd.be
+
+defaultRules:
+  rules:
+    kubernetesResources: true
+
+nodeExporter:
+  enabled: false
+
+grafana:
+  adminPassword: admin
+  persistence:
+    enabled: false
+  ingress:
+    enabled: true
+    hosts:
+      - grafana.<DOMAINNAME>.plgrnd.be
+    tls:
+      - hosts:
+          - grafana.<DOMAINNAME>.plgrnd.be
+kubelet:
+  enabled: true
+  namespace: kube-system
+
+  serviceMonitor:
+    https: true
