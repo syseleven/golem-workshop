@@ -10,7 +10,7 @@ rbacBindings:
         name: simon
         namespace: default
     roleBindings:
-      - namespace: dev
+      - namespace: web-application
         clusterRole: edit
       - namespace: kube-system
         clusterRole: view
