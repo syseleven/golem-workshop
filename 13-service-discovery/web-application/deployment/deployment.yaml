@@ -40,14 +40,14 @@ spec:
           imagePullPolicy: Always
           env:
             - name: DB_HOST
-              value: mysql-svc
+              value: db-mysql
             - name: DB_USER
               value: root
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: mysql-root-password
-                  name: mysql-secrets
+                  key: ROOT_PASSWORD
+                  name: mysql-secret
           envFrom:
             - configMapRef:
                 name: web-application-config

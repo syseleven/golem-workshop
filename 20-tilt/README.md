@@ -7,7 +7,7 @@ kubens dev-flow-demo
 ```
 * Deploy mysql
 ```
-kubectl apply -f ../11-mysql/mysql-single-secret/
+kubectl apply -f ../10-mysql/mysql-operator/
 ```
 * Run tilt
 ```

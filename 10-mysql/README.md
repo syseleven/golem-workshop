@@ -1,6 +1,20 @@
 # 11. MySql
 
-* Create MySQL Single Instance
+* Install the press labs mysql operator
+
 ```
-kubectl apply -f mysql-single-secret/
+helm repo add presslabs https://presslabs.github.io/charts
+helm install presslabs/mysql-operator --namespace mysql-operator --name mysql-operator
+```
+
+Create a secret with credentials
+
+```
+kubectl create -f mysql-secrets.yaml
+```
+
+Create a cluster
+
+```
+kubectl create  -f mysql-cluster.yaml
 ```

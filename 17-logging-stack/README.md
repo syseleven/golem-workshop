@@ -11,5 +11,6 @@ helm upgrade --install fluentd --namespace elastic-stack -f fluentd-elasticsearc
 * Adapt Ingress hostnames in `kibana/values.yaml`
 * Install Kibana
 ```
+kubectl apply -f basic-auth.yaml
 helm upgrade --install kibana --namespace elastic-stack stable/kibana -f kibana/values.yaml
 ```
