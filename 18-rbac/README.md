@@ -28,6 +28,22 @@ kubectl create -f simon_role.yaml
 kubectl create -f simon_rolebinding.yaml
 ```
 
+## Add the user and the context to your kubeconfig file
+```
+kubectl config set-credentials simon --token=SECRET-TOKEN
+kubectl config set-context --cluster=CLUSTER-ID --user=simon simon
+```
+
+## A context can also include an optional namespace
+```
+kubectl config set-context --cluster=CLUSTER-ID --user=simon --namespace=dev simon
+```
+
+## Switching contexts
+```
+kubectl config use-context simon
+```
+
 ## Install the RBAC-Manager
 
 ```
