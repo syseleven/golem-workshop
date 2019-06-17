@@ -62,3 +62,12 @@ spec:
               port: http
             timeoutSeconds: 1
             failureThreshold: 3
+        - name: prometheus-pushgateway
+          image: prom/pushgateway:v0.8.0
+          ports:
+            - containerPort: 9091
+              name: metrics
+          livenessProbe:
+            httpGet:
+              path: /
+              port: metrics

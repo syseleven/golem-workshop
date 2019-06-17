@@ -1,0 +1,22 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: web-application
+  labels:
+    app: web-application
+    release: prom
+  namespace: monitoring
+spec:
+  endpoints:
+    - interval: 30s
+      scrapeTimeout: 30s
+      port: metrics
+      path: /metrics
+  namespaceSelector:
+    matchNames:
+      - web-application
+  selector:
+    matchLabels:
+      app: web-application
+
