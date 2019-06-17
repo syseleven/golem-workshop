@@ -34,6 +34,7 @@ spec:
                 topologyKey: "kubernetes.io/hostname"
       nodeSelector:
         storagetype: network
+      terminationGracePeriodSeconds: 60
       containers:
         - name: web-application
           image: bashofmann/k8s-workshop-web-application:3.0.0
