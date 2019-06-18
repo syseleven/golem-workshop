@@ -25,6 +25,12 @@ See that default requests and limits have been applied
 kubectl get pod --namespace limits
 ```
 
+Apply quota
+
+```
+kubectl apply -f pod-quota.yaml -n limits
+```
+
 Scale up
 
 ```
