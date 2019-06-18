@@ -1,8 +1,0 @@
----
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: pod-limit
-spec:
-  hard:
-    pods: "2"

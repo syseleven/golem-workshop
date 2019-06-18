@@ -10,20 +10,38 @@ kubectl create namespace limits
 ## Deploy Quota and Limits
 
 ```
-kubectl apply -f . -n limits
+kubectl apply -f contaier-limit-range -n limits
 ```
 
 Deploy test app
 
 ```
-kubectl run test-app --image=nginxdemos/hello --namespace limits --replicas 3 --requests="cpu=500m,memory=700Mi"
+kubectl run test-app --image=nginxdemos/hello --namespace limits
 ```
 
-See that replicaset can't be created
+See that default requests and limits have been applied
 
 ```
-kubectl describe replicasets --namespace limits
+kubectl get pod --namespace limits
 ```
+
+Scale up
+
+```
+kubectl scale deployment test-app --replicas 3 --namespace limits
+```
+
+See that only one pod can be created
+
+Create second deployment
+
+```
+kubectl delete deployment test-app
+
+kubectl run test-app --image=nginxdemos/hello --namespace limits --requests="cpu=2"
+```
+
+See that pod can not be created
 
 ## Delete limits namespace again
 
