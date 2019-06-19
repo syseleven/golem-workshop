@@ -10,11 +10,11 @@ helm install presslabs/mysql-operator --namespace mysql-operator --name mysql-op
 Create a secret with credentials
 
 ```
-kubectl create -f mysql-secrets.yaml
+kubectl create -f mysql-operator/mysql-secret.yaml
 ```
 
 Create a cluster
 
 ```
-kubectl create  -f mysql-cluster.yaml
+kubectl create  -f mysql-operator/mysql-cluster.yaml
 ```
