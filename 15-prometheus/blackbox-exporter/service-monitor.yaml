@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: blackbox-exporter
+    release: prom
+  name: blackbox-exporter
+  namespace: monitoring
+spec:
+  endpoints:
+    - interval: 30s
+      params:
+        module:
+          - http_2xx
+        target:
+          - https://www.syseleven.de/
+      path: "/probe"
+      targetPort: metrics
+      relabelings:
+        - sourceLabels:
+            - __param_target
+          targetLabel: target
+        - sourceLabels:
+            - __param_module
+          targetLabel: module
+  namespaceSelector:
+    matchNames:
+      - monitoring
+  selector:
+    app: blackbox-exporter
