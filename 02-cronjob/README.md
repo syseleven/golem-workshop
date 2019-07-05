@@ -7,7 +7,7 @@ kubectl apply -f cronjob.yaml
 * See Status of CronJob
 ```
 kubectl get cronjobs
-kubectl describe cronjbos
+kubectl describe cronjobs
 ```
 * See Status of Jobs
 ```
