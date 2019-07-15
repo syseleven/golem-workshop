@@ -18,3 +18,9 @@ Create a cluster
 ```
 kubectl create  -f mysql-operator/mysql-cluster.yaml
 ```
+
+See orchestrator dashboard
+
+```
+kubectl port-forward -n mysql-operator service/mysql-operator-0-svc 8080:80
+```
