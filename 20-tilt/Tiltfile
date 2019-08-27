@@ -25,6 +25,6 @@ docker_build('bashofmann/k8s-workshop-web-application', './src/web-application',
 
 k8s_yaml(listdir('./src/web-application/deployment'))
 
-k8s_resource('quote-svc')
+k8s_resource('quote-svc', port_forwards="9229:9229")
 k8s_resource('hello-svc')
 k8s_resource('web-application', port_forwards="8080:80")
