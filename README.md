@@ -34,3 +34,5 @@ https://speakerdeck.com/bastianhofmann/dive-in-workshop-kubernetes
 * https://ahmet.im/blog/mastering-kubeconfig/
 * https://github.com/IBM/kui
 * https://github.com/bitnami-labs/sealed-secrets
+* https://github.com/eldadru/ksniff
+* https://kubernetes.academy/
