@@ -28,7 +28,7 @@ kubectl get pod --namespace limits
 Apply quota
 
 ```
-kubectl apply -f pod-quota.yaml -n limits
+kubectl apply -f pod-quota.yml -n limits
 ```
 
 Scale up
