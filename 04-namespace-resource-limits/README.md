@@ -42,7 +42,7 @@ See that only one pod can be created
 Create second deployment
 
 ```
-kubectl delete deployment test-app
+kubectl delete deployment test-app -n limits
 
 kubectl run test-app --image=nginxdemos/hello --namespace limits --requests="cpu=2"
 ```
