@@ -10,7 +10,7 @@ kubectl create namespace limits
 ## Deploy Quota and Limits
 
 ```
-kubectl apply -f container-limit-range -n limits
+kubectl apply -f container-limit-range.yml -n limits
 ```
 
 Deploy test app
