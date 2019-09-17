@@ -1,10 +1,9 @@
 # Add weaveworks repo to helm and update
 
 ```
-helm repo add weaveworks https://weaveworks.github.io/flux
+helm repo add fluxcd https://charts.fluxcd.io
 helm repo up
 ````
-
 
 # Install crd definitions
 
