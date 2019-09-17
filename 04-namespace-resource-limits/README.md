@@ -22,7 +22,7 @@ kubectl run test-app --image=nginxdemos/hello --namespace limits
 See that default requests and limits have been applied
 
 ```
-kubectl get pod --namespace limits
+kubectl describe pod --namespace limits
 ```
 
 Apply quota
