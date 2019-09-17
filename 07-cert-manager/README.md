@@ -1,8 +1,8 @@
-# 8. cert-manager
+# 7. cert-manager
 
 * Install and configure cert-manager for digital ocean
 ```
-kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.10/deploy/manifests/00-crds.yaml
 kubectl create namespace cert-manager
 kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
 helm repo add jetstack https://charts.jetstack.io
@@ -27,7 +27,7 @@ kubectl apply -f digitalocean/certificate.yaml
 
 * Install and configure cert-manager for AWS Route53
 ```
-kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.8/deploy/manifests/00-crds.yaml
+kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.10/deploy/manifests/00-crds.yaml
 kubectl create namespace cert-manager
 kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
 helm repo add jetstack https://charts.jetstack.io
@@ -41,7 +41,7 @@ helm upgrade --install --namespace cert-manager -f route53/cert-manager.yaml cer
 
 * Create ClusterIssuer
 ```
-kubectl apply -f route53/credentials-secret.yaml 
+kubectl apply -f route53/credentials-secret.yaml
 kubectl apply -f route53/clusterissuer.yaml
 ```
 * Change hostnames in `certificate.yaml`
