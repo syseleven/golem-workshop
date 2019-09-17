@@ -16,7 +16,7 @@ kubectl create namespace web-application
 ```
 * Set default namespace to context
 ```
-kubectl config set-context default --namespace=web-application 
+kubectl config set-context admin@k8s-workshop1/workshop<X> --namespace=web-application 
 ```
 * See change in kubeconfig
 ```
