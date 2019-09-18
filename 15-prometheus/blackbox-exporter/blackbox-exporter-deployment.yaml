@@ -14,11 +14,18 @@ spec:
         app: blackbox-exporter
     spec:
       containers:
-        - image: prom/blackbox-exporter:v0.14.0
+        - image: prom/blackbox-exporter:v0.15.1
           name: blackbox-exporter
+          volumeMounts:
+            - mountPath: /etc/blackbox_exporter
+              name: blackbox-exporter-config
           ports:
             - containerPort: 9115
               name: metrics
+      volumes:
+        - name: blackbox-exporter-config
+          configMap:
+            name: blackbox-exporter-config
 ---
 apiVersion: v1
 kind: Service
