@@ -1,0 +1,8 @@
+---
+- name: set kubeadm_token fact
+  set_fact: kubeadm_token={{ hostvars[groups['master'][0]]['kubeadm_token'] }}
+
+- name: Join cluster
+  command: /usr/bin/kubeadm join {{ hostvars[groups['master'][0]]['ansible_default_ipv4']['address'] }}:6443 --token '{{ kubeadm_token }}' --discovery-token-unsafe-skip-ca-verification
+  args:
+    creates: /etc/kubernetes/pki

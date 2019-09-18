@@ -1,0 +1,122 @@
+---
+- name: create token directory
+  file:
+    path: token
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: directory
+
+- name: stat token/token.yml
+  stat:
+    path:  token/token.yml
+  register: token_file
+
+- name: retrieve token if file exists
+  shell: cat token/token.yml
+  register: kubeadm_existing_token
+  check_mode: no
+  when: token_file.stat.exists
+
+- name: set kubeadm_token fact
+  set_fact: kubeadm_token={{ kubeadm_existing_token.stdout }}
+  check_mode: no
+  when: token_file.stat.exists
+
+- name: print kubeadm token
+  debug:
+    msg: "kubeadm token is {{kubeadm_token}}"
+  when: token_file.stat.exists
+
+- name: generate cluster token
+  command: kubeadm token generate
+  args:
+    creates: /etc/kubernetes/pki
+  register: kubeadm_token_generate
+  when: not token_file.stat.exists
+
+- name: set kubeadm_token fact
+  set_fact: kubeadm_token={{ kubeadm_token_generate.stdout }}
+  check_mode: no
+  when: not token_file.stat.exists
+
+- name: Save token as token.yml
+  copy:
+    dest: token/token.yml
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    content: "{{ kubeadm_token }}"
+  when: not token_file.stat.exists
+
+- name: Initialize kubernetes cluster with flannel
+  command: "/usr/bin/kubeadm init --token '{{ kubeadm_token }}' --pod-network-cidr={{ pod_network_cidr }} --apiserver-cert-extra-sans={{ hostvars[inventory_hostname].ansible_host }}"
+  args:
+    creates: /etc/kubernetes/pki
+  register: master_init
+  ignore_errors: true
+  when:  network_plugin == "flannel"
+
+- name:  Initialize kubernetes cluster with flannel output
+  debug:
+    var: master_init.stdout_lines
+  when: network_plugin == "flannel"
+
+- name: Initialize kubernetes cluster with alternative cni plugin
+  command: "/usr/bin/kubeadm init --token {{ kubeadm_token }} --apiserver-cert-extra-sans={{ hostvars[inventory_hostname].ansible_ssh_host }}"
+  args:
+    creates: /etc/kubernetes/pki
+  register: master_init
+  ignore_errors: true
+  when: network_plugin !="flannel"
+
+- name:  Initialize kubernetes cluster output
+  debug:
+    var: master_init.stdout_lines
+  when: network_plugin !="flannel"
+
+- name: Create rbac role for network
+  command: /usr/bin/kubectl apply -f {{ rbac_addon_url }}
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+  register: rbac_network_role
+  ignore_errors: true
+  when: network_plugin != "flannel"
+
+- debug:
+    var: rbac_network_role.stdout_lines
+
+- name: Create pod network
+  command: /usr/bin/kubectl apply -f {{ network_addon_url }}
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+  register: pod_network
+  ignore_errors: true
+
+- debug:
+    var: pod_network.stdout_lines
+
+- name: Copy /etc/kubernetes/admin.conf on master to local file kubeadm/admin.conf
+  fetch:
+    src: /etc/kubernetes/admin.conf
+    dest: kubeadm/admin.conf
+    flat: true
+
+- name: Copy /etc/kubernetes/admin.conf on master to users home
+  copy:
+    remote_src: True
+    src: /etc/kubernetes/admin.conf
+    dest: /home/{{ansible_user}}/admin.conf
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: add kubeconfig export to bashrc
+  lineinfile:
+    dest: /home/{{ansible_user}}/.bashrc
+    line: 'export KUBECONFIG=$HOME/admin.conf'
+    state: present
+
+- name: Wait until coredns pods are running
+  shell: "kubectl --kubeconfig /etc/kubernetes/admin.conf get pods --all-namespaces | grep coredns"
+  register: result
+  until: result.stdout.find("Running") != -1
+  retries: 30
+  delay: 10

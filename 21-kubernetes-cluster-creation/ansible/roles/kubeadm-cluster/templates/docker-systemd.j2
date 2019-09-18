@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd -H fd:// --log-opt max-size={{ docker_max_log_size }} --log-opt max-file={{ docker_max_log_files }} --exec-opt storage-driver=overlay2 --exec-opt native.cgroupdriver={{ cgroup_driver }}
