@@ -1,0 +1,16 @@
+---
+- name: Upgrade packages
+  apt: 
+    update_cache: yes
+    force_apt_get: yes
+    upgrade: safe
+
+- name: Remove downloaded packages from the apt cache
+  command: apt-get clean
+  args:  
+    warn: False
+
+- name: Remove dependencies that are no longer required
+  apt:
+    force_apt_get: yes
+    autoremove: yes  

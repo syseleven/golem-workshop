@@ -1,0 +1,19 @@
+---
+- name: Install tools and system packages
+  apt:
+    name:
+    - vim
+    - bash-completion
+    - htop
+    - git
+    - tmux
+    - curl
+    - unzip
+    - software-properties-common
+    - python3-pycurl
+    - language-pack-en
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+    install_recommends: no
+    force_apt_get: true

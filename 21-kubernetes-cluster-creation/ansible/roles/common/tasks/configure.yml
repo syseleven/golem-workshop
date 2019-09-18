@@ -1,0 +1,46 @@
+---
+- name: update /etc/hosts file
+  blockinfile:
+    dest: /etc/hosts
+    content: "{{ lookup('template', 'templates/hosts.j2') }}"
+    state: present
+
+- name: Create symlink /etc/localtime    
+  file: 
+    src: /usr/share/zoneinfo/{{ timezone }} 
+    dest: /etc/localtime 
+    owner: root 
+    group: root 
+    state: link
+  notify: Update timezone
+
+- name: Push root vimrc
+  template:
+    src: vimrc.j2
+    dest: "{{ ansible_env.HOME }}/.vimrc"
+
+- name: Push ansible user vimrc
+  template:
+    src: vimrc.j2
+    dest: "/home/{{ ansible_user }}/.vimrc"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+  when: ansible_user !="root" 
+
+- name: Set vim as default editor 
+  command: update-alternatives --set editor /usr/bin/vim.basic    
+
+- name: modifiy open file limit (limits.conf)  
+  template:
+    src: limits.conf.j2
+    dest: "/etc/security/limits.conf"
+    owner: "root"
+    group: "root"
+
+- name: modifiy open file limit systemd.conf
+  lineinfile:
+    dest: /etc/systemd/system.conf
+    regexp: "^#?DefaultLimitNOFILE"
+    line: "DefaultLimitNOFILE={{ open_file_limit | default ('65535') }}"
+    state: present
+  notify: reload systemd
