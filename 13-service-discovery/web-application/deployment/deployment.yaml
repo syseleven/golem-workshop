@@ -16,6 +16,8 @@ spec:
       app: web-application
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
         app: web-application
         workshop: workshop
