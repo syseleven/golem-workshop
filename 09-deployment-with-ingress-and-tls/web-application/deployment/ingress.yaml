@@ -2,6 +2,8 @@ kind: Ingress
 apiVersion: networking.k8s.io/v1beta1
 metadata:
   name: web-application
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "20m"
   labels:
     app: web-application
     workshop: workshop
