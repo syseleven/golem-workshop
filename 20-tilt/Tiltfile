@@ -1,3 +1,5 @@
+allow_k8s_contexts('admin@k8s-workshop1/workshop9')
+
 docker_build('bashofmann/k8s-workshop-hello-svc', './src/hello-svc')
 
 hello_svc_yaml = local('helm template helm-charts/hello-svc --name hello-svc -f ./hello-svc-values.yaml')
