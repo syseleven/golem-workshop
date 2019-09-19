@@ -81,6 +81,13 @@ spec:
             failureThreshold: 3
         - name: prometheus-pushgateway
           image: prom/pushgateway:v0.8.0
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              memory: 512Mi
+              cpu: 500m
           ports:
             - containerPort: 9091
               name: metrics

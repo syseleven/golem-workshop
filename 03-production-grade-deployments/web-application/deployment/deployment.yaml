@@ -33,12 +33,12 @@ spec:
                         - web-application
                 topologyKey: "kubernetes.io/hostname"
       nodeSelector:
-        storagetype: network
+        storagetype: ssd
       terminationGracePeriodSeconds: 60
       containers:
         - name: web-application
           image: bashofmann/k8s-workshop-web-application:1.0.0
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
               name: http
@@ -64,6 +64,13 @@ spec:
             failureThreshold: 3
         - name: prometheus-pushgateway
           image: prom/pushgateway:v0.8.0
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              memory: 512Mi
+              cpu: 500m
           ports:
             - containerPort: 9091
               name: metrics
