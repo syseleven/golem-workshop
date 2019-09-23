@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  # foo:bar
+  auth: Zm9vOiRhcHIxJExXNlpJSHV5JEpZNGlHcGQvQWQvZ1ovQzN3WlIxcTEK
+kind: Secret
+metadata:
+  name: basic-auth
+  namespace: linkerd
+type: Opaque

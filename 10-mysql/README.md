@@ -7,20 +7,23 @@ helm repo add presslabs https://presslabs.github.io/charts
 helm install presslabs/mysql-operator --namespace mysql-operator --name mysql-operator
 ```
 
-Create a secret with credentials
-
+* Change domain names in mysql-operator/mysql-orchestrator-ingress.yaml
+* Add Ingress for mysql-orchestrator dashboard
 ```
-kubectl create -f mysql-operator/mysql-secret.yaml
-```
-
-Create a cluster
-
-```
-kubectl create  -f mysql-operator/mysql-cluster.yaml
+kubectl apply -f mysql-operator/basic-auth.yaml
+kubectl apply -f mysql-operator/mysql-orchestrator-ingress.yaml
 ```
 
-See orchestrator dashboard
+* Create a secret with credentials
 
 ```
-kubectl port-forward -n mysql-operator service/mysql-operator-0-svc 8080:80
+kubectl apply -f mysql-operator/mysql-secret.yaml
 ```
+
+* Create a cluster
+
+```
+kubectl apply -f mysql-operator/mysql-cluster.yaml
+```
+
+* See orchestrator dashboard
