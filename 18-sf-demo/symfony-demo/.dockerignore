@@ -1,0 +1,23 @@
+build/
+node_modules/
+var/cache/*
+var/log/*
+var/sessions/*
+public/build
+
+###> symfony/framework-bundle ###
+public/bundles/
+vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/web-server-bundle ###
+.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> friendsofphp/php-cs-fixer ###
+.php_cs
+.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+.idea/
+helm/
