@@ -36,3 +36,4 @@ https://speakerdeck.com/bastianhofmann/dive-in-workshop-kubernetes
 * https://github.com/bitnami-labs/sealed-secrets
 * https://github.com/eldadru/ksniff
 * https://kubernetes.academy/
+* https://github.com/jonmosco/kube-ps1
