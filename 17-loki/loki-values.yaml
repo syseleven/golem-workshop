@@ -1,0 +1,20 @@
+loki:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    storageClassName: sys11-quobyte
+  serviceMonitor:
+    enabled: true
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+promtail:
+  serviceMonitor:
+    enabled: true
