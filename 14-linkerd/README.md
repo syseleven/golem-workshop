@@ -7,7 +7,7 @@ linkerd check --pre
 ```
 * Install LinkerD
 ```
-linkerd install | kubectl apply -f -
+linkerd install --ha | kubectl apply -f -
 ```
 * Edit hostnames in `linkerd-ingress.yaml`
 * Add Ingress for LinkerD dashboard
@@ -16,6 +16,14 @@ kubectl apply -f basic-auth.yaml
 kubectl apply -f linkerd-ingress.yaml
 ```
 * Inject LinkerD proxy into existing deployments
+
+Add this anntation to pods
+```
+linkerd.io/inject: enabled
+```
+
+Or run
+
 ```
 kubectl get deployments -o yaml | linkerd inject - | kubectl apply -f -
 ```
