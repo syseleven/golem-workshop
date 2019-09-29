@@ -10,9 +10,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - web-application.<YOUR_NAME>.plgrnd.be
+        - web-application.<YOUR_NAME>.metakube.io
   rules:
-    - host: web-application.<YOUR_NAME>.plgrnd.be
+    - host: web-application.<YOUR_NAME>.metakube.io
       http:
         paths:
           - path: /

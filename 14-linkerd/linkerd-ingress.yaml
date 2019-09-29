@@ -13,9 +13,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - linkerd-dashboard.<YOUR_NAME>.plgrnd.be
+        - linkerd-dashboard.<YOUR_NAME>.metakube.io
   rules:
-    - host: linkerd-dashboard.<YOUR_NAME>.plgrnd.be
+    - host: linkerd-dashboard.<YOUR_NAME>.metakube.io
       http:
         paths:
           - path: /

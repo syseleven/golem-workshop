@@ -23,7 +23,7 @@ controller:
     enabled: true
 
   extraArgs:
-    default-ssl-certificate: default/plgrnd-tls-certs
+    default-ssl-certificate: default/metakube-tls-certs
 
   ## Use host ports 80 and 443
   daemonset:
