@@ -1,8 +1,38 @@
 ---
-- name: set kubeadm_token fact
-  set_fact: kubeadm_token={{ hostvars[groups['master'][0]]['kubeadm_token'] }}
+- name: Fetch kubeadm join command from master
+  delegate_to: "{{ groups.master | first }}"
+  command: kubeadm token create --print-join-command
+  run_once: true
+  register: print_join_command
+  check_mode: no
+  changed_when: false
 
-- name: Join cluster
-  command: /usr/bin/kubeadm join {{ hostvars[groups['master'][0]]['ansible_default_ipv4']['address'] }}:6443 --token '{{ kubeadm_token }}' --discovery-token-unsafe-skip-ca-verification
+- name: Kubeadm join command output
+  debug:
+    var: print_join_command.stdout_lines
+  when: inventory_hostname == groups['master']|first
+
+- name: Set join cluster command
+  set_fact: cluster_join_command={{ print_join_command.stdout }}
+  check_mode: no
+
+- name: Worker join cluster
+  command: "{{ cluster_join_command }}"
   args:
     creates: /etc/kubernetes/pki
+  ignore_errors: yes
+  register: worker_join_cluster
+
+- name: Worker join cluster output
+  debug:
+    var: worker_join_cluster
+
+- name: abort if join cluster failed
+  fail:
+    msg: "joining the cluster failed."
+  when: worker_join_cluster.rc != 0
+
+- name: Upgrade kubelet configuration on worker nodes
+  command: "kubeadm upgrade node --kubelet-version v{{kubernetes_version}}"
+  register: upgrade_kubelet
+  notify: Restart kubelet

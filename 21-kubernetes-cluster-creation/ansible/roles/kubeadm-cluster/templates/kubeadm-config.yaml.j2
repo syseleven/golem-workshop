@@ -1,0 +1,45 @@
+#jinja2:lstrip_blocks: True
+---
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: InitConfiguration
+nodeRegistration:
+{% if cloud_provider is defined %}
+  kubeletExtraArgs:
+    cloud-provider: "{{ cloud_provider }}"
+    cgroup-driver: "{{ cgroup_driver }}"
+{% endif %}
+  taints:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+---
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+networking:
+{% if network_plugin == "flannel" %}
+  # This CIDR is a flannel default. Substitute or remove for your CNI provider.
+  podSubnet: "{{ pod_network_cidr }}"
+{% endif %}
+apiServer:
+  certSANs:
+  - "{{ ansible_hostname }}"
+  - "{{ hostvars[inventory_hostname].ansible_host }}"
+{% if load_balancer_addr is defined %}
+  - "{{ load_balancer_addr }}"
+{% endif %}
+{% if cloud_provider is defined %}
+  extraArgs:
+    cloud-provider: "{{ cloud_provider }}"
+    cloud-config: /etc/kubernetes/cloud-config
+  extraVolumes:
+  - name: cloud-conf
+    hostPath: /etc/kubernetes/cloud-config
+    mountPath: /etc/kubernetes/cloud-config
+controllerManager:
+  extraArgs:
+    cloud-provider: "{{ cloud_provider }}"
+    cloud-config: /etc/kubernetes/cloud-config
+  extraVolumes:
+  - name: cloud-conf
+    hostPath: /etc/kubernetes/cloud-config
+    mountPath: /etc/kubernetes/cloud-config
+{% endif %}

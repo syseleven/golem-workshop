@@ -1,31 +1,39 @@
 ---
 - hosts: all
-  remote_user: ubuntu 
+  remote_user: ubuntu
   become: yes
   become_method: sudo
   tasks:
   - command: /usr/bin/kubeadm -f reset
     ignore_errors: yes
-  - command: apt-get -y purge kube*      
+  - command: apt-get -y purge kube*
     ignore_errors: yes
-  - command: apt-get -y purge docker*      
+  - command: apt-get -y purge docker*
     ignore_errors: yes
-  - command: systemctl stop kubelet 
+  - command: systemctl stop kubelet
     ignore_errors: yes
-  - command: systemctl stop kubelet 
+  - command: systemctl stop kubelet
     ignore_errors: yes
   - command: systemctl stop docker
     ignore_errors: yes
   - file: path=/etc/kubernetes/ state=absent
+    ignore_errors: yes
   - file: path=/var/lib/kubelet/ state=absent
+    ignore_errors: yes
   - file: path=/etc/cni/ state=absent
+    ignore_errors: yes
   - file: path=/var/lib/cni/ state=absent
-  - file: path=/var/lib/etcd state=absent
+    ignore_errors: yes
+  - file: path=/var/lib/etcd/ state=absent
+    ignore_errors: yes
   - file: path=/home/{{ansible_user}}/admin.conf state=absent
-  - file: path=/home/{{ansible_user}}/token state=absent
+    ignore_errors: yes
   - file: path=/etc/systemd/system/docker.service state=absent
+    ignore_errors: yes
   - file: path=/etc/systemd/system/docker.service.d/docker-options.conf state=absent
+    ignore_errors: yes
   - file: path=/etc/systemd/system/docker.service.d state=absent
+    ignore_errors: yes
   - command: ifconfig cni0 down
     ignore_errors: yes
   - command: ip link delete cni0
@@ -37,4 +45,4 @@
   - command: ifconfig flannel.1 down
     ignore_errors: yes
   - command: ip link delete flannel.1
-    ignore_errors: yes  
+    ignore_errors: yes

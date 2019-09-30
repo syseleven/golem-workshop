@@ -1,0 +1,1 @@
+KUBELET_EXTRA_ARGS="{% if cloud_provider is defined %}--cloud-provider={{ cloud_provider }}{% endif %} {% if cloud_provider == 'openstack' or 'aws' %} --cloud-config=/etc/kubernetes/cloud-config{% endif %}"

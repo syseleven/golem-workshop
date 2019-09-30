@@ -1,0 +1,21 @@
+{% if cloud_provider == 'openstack' %}
+[Global]
+auth-url = "{{ lookup('env', 'OS_AUTH_URL') | default('https://api.cbk.cloud.syseleven.net:5000/v3') }}"
+username = "{{ lookup('env', 'OS_USERNAME') }}"
+password = "{{ lookup('env', 'OS_PASSWORD') }}"
+domain-name = "Default"
+tenant-id = "{{ lookup('env', 'OS_PROJECT_ID') }}"
+region = "{{ lookup('env', 'OS_REGION_NAME') | default('dbl') }}"
+
+[BlockStorage]
+trust-device-path = false
+bs-version = "v2"
+
+[LoadBalancer]
+manage-security-groups = true
+{% endif %}
+{% if cloud_provider == 'aws' %}
+[Global]
+KubernetesClusterTag=kubernetes
+KubernetesClusterID=kubernetes
+{% endif %}

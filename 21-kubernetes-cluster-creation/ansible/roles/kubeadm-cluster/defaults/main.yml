@@ -4,13 +4,13 @@ network_plugin: flannel
 pod_network_cidr: 10.244.0.0/16
 
 # kubeadm Version
-kubernetes_version: 1.15.3
+kubernetes_version: 1.16.0
 
 # kubernetes cni version
 kubernetes_cni_version: 0.7.5
 
 # docker version
-docker_version: 5:19.03.1~3-0~ubuntu
+docker_version: 5:19.03.2~3-0~ubuntu
 
 # Maximum size of docker log files in megabyte
 docker_max_log_size: 250m
@@ -22,4 +22,10 @@ docker_max_log_files: 5
 cgroup_driver: systemd
 
 # daemon set to create network pods and rbac for kubernetes
-network_addon_url: https://raw.githubusercontent.com/coreos/flannel/v0.11.0/Documentation/kube-flannel.yml
+network_addon_url: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+# Configure cloud provider openstack or aws
+cloud_provider: openstack
+
+# Master load balancer address. IP or cname of the load balancer
+# load_balancer_addr:

@@ -80,10 +80,30 @@
     group: root
     mode: 0755
 
-- name: Include group specifc kube master vars
+- name: Configure /etc/default/kubelet
+  template:
+    src: kubelet.j2
+    dest: /etc/default/kubelet
+    owner: root
+    group: root
+    mode: 0644
+  when: cloud_provider is defined
+  notify: Restart kubelet
+
+- name: Add cloud-config file
+  template:
+    src: cloud-config.j2
+    dest: /etc/kubernetes/cloud-config
+    owner: root
+    group: root
+    mode: 0644
+  when: cloud_provider is defined
+  notify: Restart kubelet
+
+- name: Include group specific kube master tasks
   include_tasks: configure-master.yml
   when: inventory_hostname in groups['master']
 
-- name: Include group specifc kube worker vars
+- name: Include group specific kube worker tasks
   include_tasks: configure-worker.yml
   when: inventory_hostname in groups['worker']
