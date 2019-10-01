@@ -13,9 +13,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - mysql-orchestrator.<YOUR_NAME>.metakube.io
+        - mysql-orchestrator.<YOUR_NAME>.metakube.org
   rules:
-    - host: mysql-orchestrator.<YOUR_NAME>.metakube.io
+    - host: mysql-orchestrator.<YOUR_NAME>.metakube.org
       http:
         paths:
           - path: /

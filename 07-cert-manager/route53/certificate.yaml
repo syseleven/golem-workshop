@@ -8,12 +8,12 @@ spec:
   acme:
     config:
     - domains:
-      - '*.<YOUR_NAME>.metakube.io'
+      - '*.<YOUR_NAME>.metakube.org'
       dns01:
         provider: route53
   commonName: ""
   dnsNames:
-      - '*.<YOUR_NAME>.metakube.io'
+      - '*.<YOUR_NAME>.metakube.org'
   secretName: unipig-tls-certs
   issuerRef:
     name: letsencrypt-prod

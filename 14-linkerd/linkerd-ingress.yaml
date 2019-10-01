@@ -13,9 +13,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - linkerd-dashboard.<YOUR_NAME>.metakube.io
+        - linkerd-dashboard.<YOUR_NAME>.metakube.org
   rules:
-    - host: linkerd-dashboard.<YOUR_NAME>.metakube.io
+    - host: linkerd-dashboard.<YOUR_NAME>.metakube.org
       http:
         paths:
           - path: /

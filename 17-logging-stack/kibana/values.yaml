@@ -62,7 +62,7 @@ service:
 ingress:
   enabled: true
   hosts:
-   - kibana.<YOUR_NAME>.metakube.io
+   - kibana.<YOUR_NAME>.metakube.org
   annotations:
    kubernetes.io/ingress.class: nginx
    # type of authentication
@@ -73,7 +73,7 @@ ingress:
    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
   tls:
    - hosts:
-      - kibana.<YOUR_NAME>.metakube.io
+      - kibana.<YOUR_NAME>.metakube.org
 
 serviceAccount:
   # Specifies whether a service account should be created
