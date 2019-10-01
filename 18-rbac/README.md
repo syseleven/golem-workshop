@@ -23,9 +23,9 @@ kubectl -n dev get serviceaccounts simon-dev -o yaml
 
 kubectl -n dev get secrets simon-dev-token-XXXXX -o jsonpath="{.data.token}" |base64 --decode
 
-kubectl create -f simon-dev-role.yaml
+kubectl -n dev create -f simon-dev-role.yaml
 
-kubectl create -f simon-dev-role-binding.yaml
+kubectl -n dev create -f simon-dev-role-binding.yaml
 ```
 
 ## Add the user simon-admin and the context to your kubeconfig file
