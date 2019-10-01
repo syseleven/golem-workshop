@@ -2,105 +2,56 @@ image:
   registry: docker.io
   repository: bitnami/external-dns
   tag: 0.5.17-debian-9-r0
+  pullPolicy: IfNotPresent
 
-## K8s resources type to be observed for new DNS entries by ExternalDNS
-##
+## This controls which types of resource external-dns should 'watch' for new
+## DNS entries.
 sources:
-- service
-- ingress
+  - service
+  - ingress
 
-## DNS provider where the DNS records will be created. Available providers are - aws, azure, cloudflare, designate, digitalocoean, google, infoblox, rfc2136
-##
-provider: designate
+## The DNS provider where the DNS records will be created (options: aws, google, inmemory, azure, rfc2136 )
+provider: aws
+
+# AWS Access keys to inject as environment variables
+aws:
+  credentials:
+    secretKey: "CHANGEME"
+    accessKey: "CHANGEME"
+    mountPath: "/.aws"
+    region: "eu-central-1"
+    zoneType: "public"
+    batchChangeSize: 1000
 
 ## Limit possible target zones by domain suffixes (optional)
-##
-domainFilters: ["metakube.io"]
+domainFilters: [metakube.org]
+## Limit possible target zones by zone id (optional)
+zoneIdFilters: []
+# Filter sources managed by external-dns via annotation using label selector semantics (default: all sources)
+annotationFilter: ""
 ## Adjust the interval for DNS updates
 interval: "1m"
-## Modify how DNS records are sychronized between sources and providers (options: sync, upsert-only)
-policy: sync
-## Registry Type. Available types are: txt, noop
+
+# Registry to use for ownership (txt or noop)
 registry: "txt"
-## TXT Registry Identifier
+
+# When using the TXT registry, a name that identifies this instance of ExternalDNS
 txtOwnerId: "CHANGEME"
-## Prefix to create a TXT record with a name following the pattern prefix.<CNAME record>
-# txtPrefix: ""
 
-## Extra Arguments to passed to external-dns
-##
-extraArgs: {}
-## Extra env. variable to set on external-dns container
-##
+## Modify how DNS records are sychronized between sources and providers (options: sync, upsert-only )
+policy: sync
 
-extraEnv:
-  - name: OS_AUTH_URL
-    value: https://api.cloud.syseleven.net:5000/v3
-  - name: OS_REGION_NAME
-    value: CHANGEME
-  - name: OS_USERNAME
-    value: CHANGEME
-  - name: OS_PASSWORD
-    value: CHANGEME
-  - name: OS_PROJECT_NAME
-    value: CHANGEME
-  - name: OS_USER_DOMAIN_NAME
-    value: Default
+# Verbosity of the logs (options: panic, debug, info, warning, error, fatal)
+logLevel: info
 
-## Replica count
-##
-replicas: 1
+## CPU and Memory limit and request for external-dns
+resources:
+  limits:
+    memory: 50Mi
+  requests:
+    memory: 50Mi
+    cpu: 10m
 
-## RBAC parameteres
-## https://kubernetes.io/docs/reference/access-authn-authz/rbac/
-##
 rbac:
   create: true
-
-##
-securityContext:
-  allowPrivilegeEscalation: false
-  readOnlyRootFilesystem: true
-  capabilities:
-    drop: ["ALL"]
-podSecurityContext:
-  fsGroup: 1001
-  runAsUser: 1001
-  runAsNonRoot: true
-
-## Configure resource requests and limits
-## ref: http://kubernetes.io/docs/user-guide/compute-resources/
-##
-resources:
- limits:
-   cpu: 50m
-   memory: 50Mi
- requests:
-   memory: 50Mi
-   cpu: 10m
-
-## Liveness Probe. The block is directly forwarded into the deployment, so you can use whatever livenessProbe configuration you want.
-## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
-##
-livenessProbe:
-  httpGet:
-    path: /healthz
-    port: http
-  initialDelaySeconds: 10
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 2
-  successThreshold: 1
-
-## Readiness Probe. The block is directly forwarded into the deployment, so you can use whatever readinessProbe configuration you want.
-## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
-##
-readinessProbe:
-  httpGet:
-    path: /healthz
-    port: http
-  initialDelaySeconds: 5
-  periodSeconds: 10
-  timeoutSeconds: 5
-  failureThreshold: 6
-  successThreshold: 1
+  apiVersion: v1beta1
