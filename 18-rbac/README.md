@@ -8,40 +8,45 @@ kubectl get serviceaccounts simon-admin -o yaml
 kubectl describe secret $(kubectl get secret | grep simon-admin | awk '{print $1}')
 kubectl get secrets simon-admin-token-4tjmg -o jsonpath="{.data.token}" |base64 --decode
 
-kubectl create -f simon_cluster_role.yaml
+kubectl create -f simon-admin-cluster-role.yaml
 
-kubectl create -f simon_cluster_rolebinding.yaml
+kubectl create -f simon-admin-cluster-rolebinding.yaml
 ```
 
 
 ## Create service account with rolebinding limited to dev namespace
 
 ```
-kubectl -n dev create serviceaccount simon
+kubectl -n dev create serviceaccount simon-dev
 
-kubectl -n dev get serviceaccounts simon -o yaml
+kubectl -n dev get serviceaccounts simon-dev -o yaml
 
 kubectl -n dev get secrets simon-token -o jsonpath="{.data.token}" |base64 --decode
 
-kubectl create -f simon_role.yaml
+kubectl create -f simon-dev-role.yaml
 
-kubectl create -f simon_rolebinding.yaml
+kubectl create -f simon-dev-role-binding.yaml
 ```
 
-## Add the user and the context to your kubeconfig file
+## Add the user simon-admin and the context to your kubeconfig file
 ```
-kubectl config set-credentials simon --token=SECRET-TOKEN
-kubectl config set-context --cluster=CLUSTER-ID --user=simon simon
+kubectl config set-credentials simon-admin --token=SECRET-TOKEN
+kubectl config set-context --cluster=CLUSTER-ID --user=simon-admin simon-admin
+```
+## Add the user simon-dev and the context to your kubeconfig file
+```
+kubectl config set-credentials simon-dev --token=SECRET-TOKEN
+kubectl config set-context --cluster=CLUSTER-ID --user=simon-dev simon-dev
 ```
 
 ## A context can also include an optional namespace
 ```
-kubectl config set-context --cluster=CLUSTER-ID --user=simon --namespace=dev simon
+kubectl config set-context --cluster=CLUSTER-ID --user=simon-dev --namespace=dev simon-dev
 ```
 
 ## Switching contexts
 ```
-kubectl config use-context simon
+kubectl config use-context simon-dev
 ```
 
 ## Install the RBAC-Manager

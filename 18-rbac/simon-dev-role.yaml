@@ -4,8 +4,8 @@ kind: Role
 metadata:
   labels:
     kubernetes.io/bootstrapping: rbac-defaults
-  name: simon
-  namespace: simon
+  name: simon-dev
+  namespace: dev
 rules:
 - apiGroups:
   - ""
@@ -23,7 +23,7 @@ rules:
 - apiGroups:
   - ""
   resources:
-  - nodes 
+  - nodes
   verbs:
   - get
   - list
