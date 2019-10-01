@@ -6,7 +6,7 @@ kubectl create serviceaccount simon-admin
 kubectl get serviceaccounts simon-admin -o yaml
 
 kubectl describe secret $(kubectl get secret | grep simon-admin | awk '{print $1}')
-kubectl get secrets simon-admin-token-4tjmg -o jsonpath="{.data.token}" |base64 --decode
+kubectl get secrets simon-admin-token-XXXXX -o jsonpath="{.data.token}" |base64 --decode
 
 kubectl create -f simon-admin-cluster-role.yaml
 
@@ -21,7 +21,7 @@ kubectl -n dev create serviceaccount simon-dev
 
 kubectl -n dev get serviceaccounts simon-dev -o yaml
 
-kubectl -n dev get secrets simon-token -o jsonpath="{.data.token}" |base64 --decode
+kubectl -n dev get secrets simon-dev-token-XXXXX -o jsonpath="{.data.token}" |base64 --decode
 
 kubectl create -f simon-dev-role.yaml
 
