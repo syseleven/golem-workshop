@@ -5,7 +5,7 @@
 helm init --client-only
 helm repo update
 ```
-* Change `digitalocean.apiToken` in values.yaml
+* Change openstack credentials in values.yaml
 * Change `txtOwnerId` in values.yaml
 * Install external-dns with Helm
 ```

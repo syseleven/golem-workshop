@@ -35,7 +35,7 @@ spec:
                         - web-application
                 topologyKey: "kubernetes.io/hostname"
       nodeSelector:
-        storagetype: network
+        storagetype: ssd
       terminationGracePeriodSeconds: 60
       containers:
         - name: web-application
