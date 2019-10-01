@@ -37,3 +37,6 @@ https://speakerdeck.com/bastianhofmann/dive-in-workshop-kubernetes
 * https://github.com/eldadru/ksniff
 * https://kubernetes.academy/
 * https://github.com/jonmosco/kube-ps1
+* https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler
+* https://github.com/herbrandson/k8dash
+* https://github.com/kubernetes/dashboard

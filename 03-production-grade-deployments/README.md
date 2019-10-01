@@ -12,7 +12,7 @@ kubectl describe pods
 * Label Nodes
 ```
 kubectl get nodes
-kubectl label nodes --all storagetype=network 
+kubectl label nodes --all storagetype=ssd 
 ```
 * See that pods are schedules
 ```
