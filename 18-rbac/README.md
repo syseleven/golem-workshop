@@ -45,8 +45,15 @@ kubectl config set-context --cluster=CLUSTER-ID --user=simon-dev --namespace=dev
 ```
 
 ## Switching contexts
+
+## Switch to user simon-dev
 ```
 kubectl config use-context simon-dev
+```
+
+## Switch to user simon-admin
+```
+kubectl config use-context simon-admin
 ```
 
 ## Install the RBAC-Manager
