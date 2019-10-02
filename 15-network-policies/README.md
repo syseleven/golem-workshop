@@ -24,6 +24,30 @@ kubectl apply -f network-policy.yaml
 kubectl --generator=run-pod/v1 --namespace network-policy-test run curl --image=radial/busyboxplus:curl --restart=Never --rm -i --command curl -- http://nginx.web-application -v --connect-timeout 5
 ```
 
+* label namespace
+
+```
+kubectl label namespace network-policy-test access=allowed
+```
+
+* See that connection works again
+
+```
+kubectl --generator=run-pod/v1 --namespace network-policy-test run curl --image=radial/busyboxplus:curl --restart=Never --rm -i --command curl -- http://nginx.web-application -v --connect-timeout 5
+```
+
+* remove label
+
+```
+kubectl label namespace network-policy-test access-
+```
+
+* See that connection can not be established
+
+```
+kubectl --generator=run-pod/v1 --namespace network-policy-test run curl --image=radial/busyboxplus:curl --restart=Never --rm -i --command curl -- http://nginx.web-application -v --connect-timeout 5
+```
+
 * Delete network policy that forbids call
 
 ```
