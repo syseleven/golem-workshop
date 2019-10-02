@@ -9,12 +9,12 @@ spec:
       providers:
       - name: route53
         route53:
-          accessKeyID: XXXXXXXX 
+          accessKeyID: XXXXXXXX
           region: eu-central-1
           secretAccessKeySecretRef:
             key: secret-access-key
             name: route53-credentials-secret
-    email: admin@metakube.de 
+    email: admin@metakube.de
     privateKeySecretRef:
       name: letsencrypt-acme-account-key
     server: https://acme-v02.api.letsencrypt.org/directory
