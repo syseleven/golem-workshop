@@ -10,7 +10,7 @@ variable "region" {
 
 variable "image_name" {
   description = "Openstack image for all nodes"
-  default     = "Ubuntu Bionic 18.04 (2019-09-18)"
+  default     = "Ubuntu Bionic 18.04 (2019-10-01)"
 }
 
 variable "master_flavor" {
