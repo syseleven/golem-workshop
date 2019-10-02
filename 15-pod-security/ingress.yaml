@@ -1,0 +1,19 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+  name: security-context-demo
+  labels:
+    app: security-context-demo
+    workshop: workshop
+spec:
+  tls:
+    - hosts:
+        - security-context-demo.<YOUR_NAME>.metakube.org
+  rules:
+    - host: security-context-demo.<YOUR_NAME>.metakube.org
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: security-context-demo
+              servicePort: 80

@@ -1,0 +1,45 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: security-context-demo
+  labels:
+    app: security-context-demo
+    workshop: workshop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: security-context-demo
+  template:
+    metadata:
+      labels:
+        app: security-context-demo
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsGroup: 1000
+        runAsUser: 1000
+      containers:
+        - name: app
+          image: bashofmann/angular-test-app:1.0.0
+          ports:
+            - containerPort: 8080
+              name: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 512Mi
+          securityContext:
+            readOnlyRootFilesystem: true
+            privileged: false
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - all
