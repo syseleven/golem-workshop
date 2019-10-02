@@ -2,7 +2,7 @@
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
-  name: unipig-all
+  name: metakube-all
   namespace: default
 spec:
   acme:
@@ -14,7 +14,7 @@ spec:
   commonName: ""
   dnsNames:
       - '*.<YOUR_NAME>.metakube.org'
-  secretName: unipig-tls-certs
+  secretName: metakube-tls-certs
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
