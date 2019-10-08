@@ -1,16 +1,16 @@
 [master]
-master0
+master01
 
 [worker]
-worker0
-worker1
-worker2
+worker01
+worker02
+worker03
 
 [all]
-master0		ansible_host=
-worker0		ansible_host=
-worker1		ansible_host=
-worker2		ansible_host=
+master01	ansible_host=
+worker01	ansible_host=
+worker02	ansible_host=
+worker03    ansible_host=
 
 [kube_cluster:children]
 master		
