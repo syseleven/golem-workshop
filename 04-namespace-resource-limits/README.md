@@ -16,7 +16,7 @@ kubectl apply -f container-limit-range.yml -n limits
 Deploy test app
 
 ```
-kubectl run test-app --image=nginxdemos/hello --namespace limits
+kubectl run --generator=run-pod/v1 test-app --image=nginxdemos/hello --namespace limits
 ```
 
 See that default requests and limits have been applied
@@ -44,7 +44,7 @@ Create second deployment
 ```
 kubectl delete deployment test-app -n limits
 
-kubectl run test-app --image=nginxdemos/hello --namespace limits --requests="cpu=2"
+kubectl run --generator=run-pod/v1 test-app --image=nginxdemos/hello --namespace limits --requests="cpu=2"
 ```
 
 See that pod can not be created
@@ -54,8 +54,3 @@ See that pod can not be created
 ```
 kubectl delete namespace limits
 ```
-
-
-
-
-
