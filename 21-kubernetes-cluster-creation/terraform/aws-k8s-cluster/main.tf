@@ -104,7 +104,7 @@ resource "aws_security_group" "master" {
   }
 }
 
-# security group to access the worker and etcd nodes over SSH
+# security group to access the worker nodes over SSH
 resource "aws_security_group" "worker" {
   name        = "sec_group_worker"
   description = "Security group for Worker nodes"
@@ -164,17 +164,6 @@ module "worker_nodes" {
     instance_count         = "3"
     group_name             = "worker"
     instance_type          = "t2.large"
-    aws_iam_profile        = "node-role"
-}
-
-module "etcd_nodes" {
-    source                 = "./instance"
-    subnet_id              = "${aws_subnet.private.id}"
-    key_pair_id            = "${aws_key_pair.auth.id}"
-    security_group_id      = "${aws_security_group.worker.id}"
-
-    instance_count         = "3"
-    group_name             = "etcd"
     aws_iam_profile        = "node-role"
 }
 
