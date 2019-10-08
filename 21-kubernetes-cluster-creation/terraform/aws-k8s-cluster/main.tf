@@ -150,7 +150,7 @@ module "master_nodes" {
     key_pair_id            = "${aws_key_pair.auth.id}"
     security_group_id      = "${aws_security_group.master.id}"
 
-    instance_count         = "3"
+    instance_count         = "1"
     group_name             = "master"
     aws_iam_profile        = "master-role"
 }
@@ -161,7 +161,7 @@ module "worker_nodes" {
     key_pair_id            = "${aws_key_pair.auth.id}"
     security_group_id      = "${aws_security_group.worker.id}"
 
-    instance_count         = "4"
+    instance_count         = "3"
     group_name             = "worker"
     instance_type          = "t2.large"
     aws_iam_profile        = "node-role"
