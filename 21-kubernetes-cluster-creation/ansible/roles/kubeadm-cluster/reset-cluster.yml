@@ -26,6 +26,8 @@
     ignore_errors: yes
   - file: path=/var/lib/etcd/ state=absent
     ignore_errors: yes
+  - file: path=/etc/default/kubelet state=absent
+    ignore_errors: yes
   - file: path=/home/{{ansible_user}}/admin.conf state=absent
     ignore_errors: yes
   - file: path=/etc/systemd/system/docker.service state=absent
