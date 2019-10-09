@@ -40,3 +40,6 @@ https://speakerdeck.com/bastianhofmann/dive-in-workshop-kubernetes
 * https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler
 * https://github.com/herbrandson/k8dash
 * https://github.com/kubernetes/dashboard
+* https://gitlab.com/bashofmann/angular-test-app-finished
+* https://github.com/kelseyhightower/kubernetes-the-hard-way
+* https://k8s.af/
