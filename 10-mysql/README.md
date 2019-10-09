@@ -1,4 +1,4 @@
-# 11. MySql
+# 10. MySQL
 
 * Install the press labs mysql operator
 
