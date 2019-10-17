@@ -54,6 +54,8 @@ nodeExporter:
 
 grafana:
   adminPassword: admin
+  sidecar:
+    image: syseleven/k8s-sidecar:0.0.18-sys11-3
   persistence:
     enabled: false
   ingress:
