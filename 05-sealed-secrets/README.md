@@ -2,13 +2,13 @@
 
 * Install sealed secrets controller
 ```
-helm upgrade --install --namespace kube-system sealed-secrets stable/sealed-secrets
+helm upgrade --install --namespace kube-system sealed-secrets-controller stable/sealed-secrets
 ```
 
 * Install kubeseal client https://github.com/bitnami-labs/sealed-secrets#homebrew
 * Encrypt secret
 ```
-kubectl create secret generic my-secret --dry-run --from-literal=secret=value -o json | kubeseal --controller-name sealed-secrets > encrypted-my-secret.yaml
+kubectl create secret generic my-secret --dry-run --from-literal=secret=value -o json | kubeseal > encrypted-my-secret.yaml
 ```
 
 * Create sealed secret in cluster
