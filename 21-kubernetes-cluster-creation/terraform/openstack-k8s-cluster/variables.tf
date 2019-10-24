@@ -34,7 +34,7 @@ variable "master_assign_floating_ip" {
 
 variable "security_groups_master" {
   description = "security groups master nodes"
-  default     = ["ssh-sec-group", "apiserver-sec-group"]
+  default     = ["ssh-sec-group", "apiserver-sec-group", "default"]
 }
 
 variable "worker_count" {
@@ -48,7 +48,7 @@ variable "worker_assign_floating_ip" {
 
 variable "security_groups_worker" {
   description = "security groups worker nodes"
-  default     = ["ssh-sec-group"]
+  default     = ["ssh-sec-group", "default"]
 }
 
 variable "network_name" {
