@@ -1,17 +1,10 @@
----
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
   name: metakube-all
   namespace: default
 spec:
-  acme:
-    config:
-    - domains:
-      - '*.<YOUR_NAME>.plgrnd.be'
-      dns01:
-        provider: digitalocean
-  commonName: ""
+  commonName: '*.<YOUR_NAME>.plgrnd.be'
   dnsNames:
     - '*.<YOUR_NAME>.plgrnd.be'
   secretName: metakube-tls-certs
