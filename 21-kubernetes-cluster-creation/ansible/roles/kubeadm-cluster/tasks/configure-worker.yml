@@ -10,7 +10,6 @@
 - name: Kubeadm join command output
   debug:
     var: print_join_command.stdout_lines
-  when: inventory_hostname == groups['master']|first
 
 - name: Set join cluster command
   set_fact: cluster_join_command={{ print_join_command.stdout }}

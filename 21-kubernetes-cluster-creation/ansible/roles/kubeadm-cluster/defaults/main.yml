@@ -4,13 +4,13 @@ network_plugin: flannel
 pod_network_cidr: 10.244.0.0/16
 
 # kubeadm Version
-kubernetes_version: 1.16.1
+kubernetes_version: 1.16.2
 
 # kubernetes cni version
 kubernetes_cni_version: 0.7.5
 
 # docker version
-docker_version: 5:19.03.2~3-0~ubuntu
+docker_version: 5:19.03.4~3-0~ubuntu
 
 # Maximum size of docker log files in megabyte
 docker_max_log_size: 250m
