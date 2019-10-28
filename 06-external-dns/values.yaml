@@ -1,8 +1,5 @@
 image:
-  registry: docker.io
-  repository: bitnami/external-dns
   tag: 0.5.17-debian-9-r0
-  pullPolicy: IfNotPresent
 
 ## This controls which types of resource external-dns should 'watch' for new
 ## DNS entries.
@@ -11,24 +8,23 @@ sources:
   - ingress
 
 ## The DNS provider where the DNS records will be created (options: aws, google, inmemory, azure, rfc2136 )
-provider: aws
+provider: digitalocean
+
+digitalocean:
+  apiToken: CHANGEME
 
 # AWS Access keys to inject as environment variables
-aws:
-  credentials:
-    secretKey: "CHANGEME"
-    accessKey: "CHANGEME"
-    mountPath: "/.aws"
-    region: "eu-central-1"
-    zoneType: "public"
-    batchChangeSize: 1000
+#aws:
+#  credentials:
+#    secretKey: "CHANGEME"
+#    accessKey: "CHANGEME"
+#    mountPath: "/.aws"
+#    region: "eu-central-1"
+#    zoneType: "public"
+#    batchChangeSize: 1000
 
 ## Limit possible target zones by domain suffixes (optional)
-domainFilters: [metakube.org]
-## Limit possible target zones by zone id (optional)
-zoneIdFilters: []
-# Filter sources managed by external-dns via annotation using label selector semantics (default: all sources)
-annotationFilter: ""
+domainFilters: [plgrnd.be]
 ## Adjust the interval for DNS updates
 interval: "1m"
 

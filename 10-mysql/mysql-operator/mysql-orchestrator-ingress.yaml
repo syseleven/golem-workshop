@@ -7,15 +7,13 @@ metadata:
     nginx.ingress.kubernetes.io/auth-type: basic
     # name of the secret that contains the user/password definitions
     nginx.ingress.kubernetes.io/auth-secret: basic-auth
-    # message to display with an appropriate context why the authentication is required
-    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
   namespace: mysql-operator
 spec:
   tls:
     - hosts:
-        - mysql-orchestrator.<YOUR_NAME>.metakube.org
+        - mysql-orchestrator.<YOUR_NAME>.plgrnd.be
   rules:
-    - host: mysql-orchestrator.<YOUR_NAME>.metakube.org
+    - host: mysql-orchestrator.<YOUR_NAME>.plgrnd.be
       http:
         paths:
           - path: /

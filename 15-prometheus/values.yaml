@@ -37,13 +37,11 @@ prometheus:
       nginx.ingress.kubernetes.io/auth-type: basic
       # name of the secret that contains the user/password definitions
       nginx.ingress.kubernetes.io/auth-secret: basic-auth
-      # message to display with an appropriate context why the authentication is required
-      nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
     hosts:
-      - prometheus.<DOMAINNAME>.metakube.org
+      - prometheus.<DOMAINNAME>.plgrnd.be
     tls:
       - hosts:
-          - prometheus.<DOMAINNAME>.metakube.org
+          - prometheus.<DOMAINNAME>.plgrnd.be
 
 defaultRules:
   rules:
@@ -65,13 +63,11 @@ grafana:
       nginx.ingress.kubernetes.io/auth-type: basic
       # name of the secret that contains the user/password definitions
       nginx.ingress.kubernetes.io/auth-secret: basic-auth
-      # message to display with an appropriate context why the authentication is required
-      nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
     hosts:
-      - grafana.<DOMAINNAME>.metakube.org
+      - grafana.<DOMAINNAME>.plgrnd.be
     tls:
       - hosts:
-          - grafana.<DOMAINNAME>.metakube.org
+          - grafana.<DOMAINNAME>.plgrnd.be
 kubelet:
   enabled: true
   namespace: kube-system
