@@ -14,6 +14,9 @@ nodeRegistration:
 ---
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
+{% if load_balancer_addr is defined %}
+controlPlaneEndpoint: "{{ load_balancer_addr }}:6443"
+{% endif %}
 networking:
 {% if network_plugin == "flannel" %}
   # This CIDR is a flannel default. Substitute or remove for your CNI provider.
@@ -23,9 +26,6 @@ apiServer:
   certSANs:
   - "{{ ansible_hostname }}"
   - "{{ hostvars[inventory_hostname].ansible_host }}"
-{% if load_balancer_addr is defined %}
-  - "{{ load_balancer_addr }}"
-{% endif %}
 {% if cloud_provider is defined %}
   extraArgs:
     cloud-provider: "{{ cloud_provider }}"
