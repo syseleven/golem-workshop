@@ -38,7 +38,6 @@ spec:
       containers:
         - name: web-application
           image: bashofmann/k8s-workshop-web-application:8.0.1
-          imagePullPolicy: Always
           env:
             - name: DB_HOST
               value: db-mysql

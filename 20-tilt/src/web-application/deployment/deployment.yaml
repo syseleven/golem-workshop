@@ -22,7 +22,6 @@ spec:
       containers:
         - name: web-application
           image: bashofmann/k8s-workshop-web-application:8.0.1
-          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: web-application-config
