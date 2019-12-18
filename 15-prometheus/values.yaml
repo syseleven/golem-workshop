@@ -43,10 +43,10 @@ prometheus:
       # name of the secret that contains the user/password definitions
       nginx.ingress.kubernetes.io/auth-secret: basic-auth
     hosts:
-      - prometheus.<DOMAINNAME>.plgrnd.be
+      - prometheus.<DOMAINNAME>.metakube.org
     tls:
       - hosts:
-          - prometheus.<DOMAINNAME>.plgrnd.be
+          - prometheus.<DOMAINNAME>.metakube.org
 
 defaultRules:
   rules:
@@ -69,10 +69,10 @@ grafana:
       # name of the secret that contains the user/password definitions
       nginx.ingress.kubernetes.io/auth-secret: basic-auth
     hosts:
-      - grafana.<DOMAINNAME>.plgrnd.be
+      - grafana.<DOMAINNAME>.metakube.org
     tls:
       - hosts:
-          - grafana.<DOMAINNAME>.plgrnd.be
+          - grafana.<DOMAINNAME>.metakube.org
 kubelet:
   enabled: true
   namespace: kube-system

@@ -8,9 +8,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - security-context-demo.<YOUR_NAME>.plgrnd.be
+        - security-context-demo.<YOUR_NAME>.metakube.org
   rules:
-    - host: security-context-demo.<YOUR_NAME>.plgrnd.be
+    - host: security-context-demo.<YOUR_NAME>.metakube.org
       http:
         paths:
           - path: /

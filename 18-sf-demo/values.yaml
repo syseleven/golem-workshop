@@ -6,10 +6,10 @@ replicaCount: 1
 ingress:
   enabled: true
   hosts:
-    - host: symfony-demo.<YOURNAME>.plgrnd.be
+    - host: symfony-demo.<YOURNAME>.metakube.org
       paths:
         - /
 
   tls:
     - hosts:
-      - symfony-demo.<YOURNAME>.plgrnd.be
+      - symfony-demo.<YOURNAME>.metakube.org

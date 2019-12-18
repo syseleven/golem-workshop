@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - web-application.<YOUR_NAME>.plgrnd.be
+        - web-application.<YOUR_NAME>.metakube.org
       # secretName: web-application-tls
   rules:
-    - host: web-application.<YOUR_NAME>.plgrnd.be
+    - host: web-application.<YOUR_NAME>.metakube.org
       http:
         paths:
           - path: /

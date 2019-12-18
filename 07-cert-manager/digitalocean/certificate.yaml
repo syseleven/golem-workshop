@@ -4,9 +4,9 @@ metadata:
   name: metakube-all
   namespace: default
 spec:
-  commonName: '*.<YOUR_NAME>.plgrnd.be'
+  commonName: '*.<YOUR_NAME>.metakube.org'
   dnsNames:
-    - '*.<YOUR_NAME>.plgrnd.be'
+    - '*.<YOUR_NAME>.metakube.org'
   secretName: metakube-tls-certs
   issuerRef:
     name: letsencrypt-prod
