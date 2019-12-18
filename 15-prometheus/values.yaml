@@ -12,6 +12,10 @@ kubeControllerManager:
 kubeScheduler:
   enabled: false
 
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+
 alertmanager:
   alertmanagerSpec:
     storage:
@@ -73,6 +77,19 @@ grafana:
     tls:
       - hosts:
           - grafana.<DOMAINNAME>.metakube.org
+  grafana.ini:
+    users:
+      auto_assign_org_role: Editor
+    auth:
+      disable_login_form: true
+    auth.basic:
+      enabled: false
+    auth.anonymous:
+      enabled: true
+      org_role: Editor
+    analytics:
+      check_for_updates: false
+
 kubelet:
   enabled: true
   namespace: kube-system
