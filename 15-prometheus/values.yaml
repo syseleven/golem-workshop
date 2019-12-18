@@ -28,6 +28,11 @@ prometheus:
   prometheusSpec:
     retention: 4h
     ruleSelector: {}
+    ruleSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelector: {}
+    podMonitorSelectorNilUsesHelmValues: false
     replicas: 1
     podAntiAffinity: hard
   ingress:
