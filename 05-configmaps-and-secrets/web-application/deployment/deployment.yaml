@@ -84,5 +84,5 @@ spec:
               port: metrics
       volumes:
         - name: web-application-secret
-          persistentVolumeClaim:
-            claimName: my-volume
+          secret:
+            secretName: web-application-secret
