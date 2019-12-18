@@ -8,7 +8,7 @@ kubectl apply -f datasource.yaml
 ```
 Restart Grafana
 ```
-kubectl rollout restart deployment -n monitoring grafana
+kubectl rollout restart deployment -n monitoring prom-grafana
 # or
 kubectl delete pod -n monitoring -l app=grafana
 ```
