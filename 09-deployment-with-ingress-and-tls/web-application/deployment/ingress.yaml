@@ -4,6 +4,7 @@ metadata:
   name: web-application
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "20m"
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
   labels:
     app: web-application
     workshop: workshop
@@ -11,6 +12,7 @@ spec:
   tls:
     - hosts:
         - web-application.<YOUR_NAME>.plgrnd.be
+      # secretName: web-application-tls
   rules:
     - host: web-application.<YOUR_NAME>.plgrnd.be
       http:
