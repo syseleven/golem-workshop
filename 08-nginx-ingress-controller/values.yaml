@@ -1,7 +1,4 @@
 controller:
-  image:
-    tag: "0.25.1"
-
   publishService:
     enabled: true
 

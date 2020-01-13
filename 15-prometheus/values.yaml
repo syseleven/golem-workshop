@@ -14,7 +14,7 @@ kubeScheduler:
 
 prometheusOperator:
   admissionWebhooks:
-    enabled: false
+    enabled: true
 
 alertmanager:
   alertmanagerSpec:

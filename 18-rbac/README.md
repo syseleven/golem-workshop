@@ -61,7 +61,7 @@ kubectl config use-context simon-admin
 ```
 helm repo add reactiveops-stable https://charts.reactiveops.com/stable
 
-helm install reactiveops-stable/rbac-manager --name rbac-manager --namespace rbac-manager
+helm upgrade --install rbac-manager reactiveops-stable/rbac-manager --namespace rbac-manager
 ```
 
 ## Install RBAC Lookup

@@ -4,7 +4,8 @@
 
 ```
 helm repo add presslabs https://presslabs.github.io/charts
-helm install presslabs/mysql-operator --namespace mysql-operator --name mysql-operator
+helm create namespace mysql-operator
+helm upgrade --install mysql-operator presslabs/mysql-operator --namespace mysql-operator
 ```
 
 * Change domain names in mysql-operator/mysql-orchestrator-ingress.yaml

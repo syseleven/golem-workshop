@@ -14,7 +14,7 @@ helm upgrade --install hello-svc helm-charts/hello-svc -f hello-svc-values.yaml
 * Print YAML that helm would apply
 
 ```
- helm template --name hello-svc helm-charts/hello-svc -f hello-svc-values.yaml -f hello-svc-stage.yaml --set image.tag=10.0.1
+ helm template hello-svc helm-charts/hello-svc -f hello-svc-values.yaml -f hello-svc-stage.yaml --set image.tag=10.0.1
 ```
 
 * Test installation

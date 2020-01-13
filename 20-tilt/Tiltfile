@@ -2,7 +2,7 @@ allow_k8s_contexts('admin@k8s-workshop1/workshop9')
 
 docker_build('bashofmann/k8s-workshop-hello-svc', './src/hello-svc')
 
-hello_svc_yaml = local('helm template helm-charts/hello-svc --name hello-svc -f ./hello-svc-values.yaml')
+hello_svc_yaml = local('helm template hello-svc helm-charts/hello-svc -f ./hello-svc-values.yaml')
 watch_file('helm-charts/hello-svc')
 
 k8s_yaml(hello_svc_yaml)
@@ -13,7 +13,7 @@ docker_build('bashofmann/k8s-workshop-quote-svc', './src/quote-svc', live_update
    sync('src/quote-svc', '/app/'),
 ])
 
-quote_svc_yaml = local('helm template helm-charts/quote-svc --name quote-svc -f ./quote-svc-values.yaml')
+quote_svc_yaml = local('helm template quote-svc helm-charts/quote-svc -f ./quote-svc-values.yaml')
 watch_file('helm-charts/quote-svc')
 
 k8s_yaml(quote_svc_yaml)
