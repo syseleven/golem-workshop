@@ -4,7 +4,7 @@ network_plugin: flannel
 pod_network_cidr: 10.244.0.0/16
 
 # kubeadm Version
-kubernetes_version: 1.16.2
+kubernetes_version: 1.17.1
 
 # kubernetes cni version
 kubernetes_cni_version: 0.7.5
