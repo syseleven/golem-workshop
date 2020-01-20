@@ -12,14 +12,6 @@ controller:
   ## Name of the ingress class to route through this controller
   ingressClass: nginx
 
-  ## Limit the scope of the controller
-  scope:
-    enabled: false
-    namespace: ""   # defaults to .Release.Namespace
-
-  ## DaemonSet or Deployment
-  kind: Deployment
-
   replicaCount: 3
 
   minAvailable: 1

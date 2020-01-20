@@ -37,9 +37,6 @@ txtOwnerId: "CHANGEME"
 ## Modify how DNS records are sychronized between sources and providers (options: sync, upsert-only )
 policy: sync
 
-# Verbosity of the logs (options: panic, debug, info, warning, error, fatal)
-logLevel: info
-
 ## CPU and Memory limit and request for external-dns
 resources:
   limits:
@@ -47,7 +44,3 @@ resources:
   requests:
     memory: 50Mi
     cpu: 10m
-
-rbac:
-  create: true
-  apiVersion: v1beta1

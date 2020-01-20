@@ -12,10 +12,6 @@ kubeControllerManager:
 kubeScheduler:
   enabled: false
 
-prometheusOperator:
-  admissionWebhooks:
-    enabled: true
-
 alertmanager:
   alertmanagerSpec:
     storage:
