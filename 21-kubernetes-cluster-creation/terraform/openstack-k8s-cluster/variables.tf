@@ -1,6 +1,6 @@
 variable "public_key_path" {
   description = "Enter the path to the SSH Public to use on your openstack servers"
-  default = "~/.ssh/id_rsa.pub"
+  default     = "~/.ssh/id_rsa.pub"
 }
 
 variable "region" {
@@ -62,3 +62,4 @@ variable "subnet_name" {
 variable "router_name" {
   default = "router-k8s"
 }
+

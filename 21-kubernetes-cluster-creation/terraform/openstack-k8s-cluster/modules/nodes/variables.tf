@@ -1,6 +1,6 @@
 variable "image_name" {
   description = "Openstack image for all nodes"
-  default     = "Ubuntu Bionic 18.04 (2019-10-09)"
+  default     = "Ubuntu Bionic 18.04 (2020-01-17)"
 }
 
 variable "flavor_name" {
