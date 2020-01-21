@@ -9,7 +9,7 @@ helm repo update
 * Replace all occurrences of `CHANGEME` in values.yaml
 * Install external-dns with Helm
 ```
-helm create namespace external-dns
+kubectl create namespace external-dns
 helm upgrade --install external-dns --namespace=external-dns -f values.yaml stable/external-dns
 ```
 * Deploy nginx test with dns entry

@@ -4,7 +4,7 @@
 
 ```
 helm repo add presslabs https://presslabs.github.io/charts
-helm create namespace mysql-operator
+kubectl create namespace mysql-operator
 helm upgrade --install mysql-operator presslabs/mysql-operator --namespace mysql-operator
 ```
 
