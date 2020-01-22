@@ -7,7 +7,7 @@ helm repo add presslabs https://presslabs.github.io/charts
 kubectl create namespace mysql-operator
 kubectl apply -f https://raw.githubusercontent.com/presslabs/mysql-operator/master/config/crds/mysql_v1alpha1_mysqlcluster.yaml
 kubectl apply -f https://raw.githubusercontent.com/presslabs/mysql-operator/master/config/crds/mysql_v1alpha1_mysqlbackup.yaml
-helm upgrade --install mysql-operator presslabs/mysql-operator --namespace mysql-operator
+helm upgrade --install mysql-operator presslabs/mysql-operator --namespace mysql-operator -f operator-values.yaml
 ```
 
 * Change domain names in mysql-operator/mysql-orchestrator-ingress.yaml

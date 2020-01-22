@@ -1,0 +1,4 @@
+orchestrator:
+  config:
+    # `reset slave all` and `set read_only=0` on promoted master
+    ApplyMySQLPromotionAfterMasterFailover: true
