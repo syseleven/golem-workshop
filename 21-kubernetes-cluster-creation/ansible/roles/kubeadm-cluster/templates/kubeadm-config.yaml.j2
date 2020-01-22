@@ -22,6 +22,7 @@ networking:
   # This CIDR is a flannel default. Substitute or remove for your CNI provider.
   podSubnet: "{{ pod_network_cidr }}"
 {% endif %}
+kubernetesVersion: "v{{ kubernetes_version }}"
 apiServer:
   certSANs:
   - "{{ ansible_hostname }}"

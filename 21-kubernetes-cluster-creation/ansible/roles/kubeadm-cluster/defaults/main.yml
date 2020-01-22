@@ -25,7 +25,7 @@ cgroup_driver: systemd
 network_addon_url: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 # Configure cloud provider openstack or aws
-cloud_provider: openstack
+cloud_provider: aws
 
 # Master load balancer address. IP or cname of the load balancer
 # load_balancer_addr:

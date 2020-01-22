@@ -1,23 +1,37 @@
 ---
+
+- name: update /etc/hostname file
+  copy:
+    content: "{{ inventory_hostname }}{% if hostname_postfix | length > 0 %}-{{ hostname_postfix }}{% endif %}"
+    dest: /etc/hostname
+
+- name: Set the hostname
+  hostname:
+    name: "{{ inventory_hostname }}{% if hostname_postfix | length > 0 %}-{{ hostname_postfix }}{% endif %}"
+
 - name: update /etc/hosts file
   blockinfile:
     dest: /etc/hosts
     content: "{{ lookup('template', 'templates/hosts.j2') }}"
     state: present
 
-- name: Create symlink /etc/localtime    
-  file: 
-    src: /usr/share/zoneinfo/{{ timezone }} 
-    dest: /etc/localtime 
-    owner: root 
-    group: root 
+- name: create symlink /etc/localtime
+  file:
+    src: /usr/share/zoneinfo/Europe/Berlin
+    dest: /etc/localtime
+    owner: root
+    group: root
     state: link
-  notify: Update timezone
+
+- name: Reconfigure timezone
+  shell: DEBIAN_FRONTEND=noninteractive dpkg-reconfigure -f noninteractive tzdata
+  changed_when: 0
 
 - name: Push root vimrc
   template:
     src: vimrc.j2
     dest: "{{ ansible_env.HOME }}/.vimrc"
+  changed_when: 0
 
 - name: Push ansible user vimrc
   template:
@@ -25,12 +39,13 @@
     dest: "/home/{{ ansible_user }}/.vimrc"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-  when: ansible_user !="root" 
+  when: ansible_user !="root"
 
-- name: Set vim as default editor 
-  command: update-alternatives --set editor /usr/bin/vim.basic    
+- name: Set vim as default editor
+  command: update-alternatives --set editor /usr/bin/vim.basic
+  changed_when: 0
 
-- name: modifiy open file limit (limits.conf)  
+- name: modifiy open file limit (limits.conf)
   template:
     src: limits.conf.j2
     dest: "/etc/security/limits.conf"

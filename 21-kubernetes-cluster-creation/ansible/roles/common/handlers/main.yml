@@ -1,6 +1,4 @@
 ---
+
 - name: reload systemd
   command: systemctl daemon-reload
-
-- name: Update timezone
-  command: dpkg-reconfigure --frontend noninteractive tzdata
