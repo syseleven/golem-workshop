@@ -55,6 +55,10 @@ defaultRules:
 nodeExporter:
   enabled: false
 
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+
 grafana:
   adminPassword: admin
   sidecar:
