@@ -173,7 +173,7 @@ module "worker_nodes" {
 resource "aws_elb" "master" {
   name = "elb-public-master"
 
-  subnets         = [aws_subnet.public.id, aws_subnet.private.id]
+  subnets         = [aws_subnet.private.id]
   security_groups = [aws_security_group.elb.id]
   instances       = module.master_nodes.instance_ids
 
