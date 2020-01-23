@@ -58,6 +58,8 @@ nodeExporter:
 prometheusOperator:
   admissionWebhooks:
     enabled: false
+  tlsProxy:
+    enabled: false
 
 grafana:
   adminPassword: admin
