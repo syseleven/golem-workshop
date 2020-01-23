@@ -13,6 +13,12 @@ spec:
       scrapeTimeout: 30s
       port: metrics
       path: /metrics
+      relabelings:
+        - sourceLabels: [__meta_kubernetes_pod_label_app, __meta_kubernetes_pod_node_name]
+          action: replace
+          regex: node-exporter;(.+)
+          replacement: $1
+          targetLabel: instance
   namespaceSelector:
     matchNames:
       - kube-system
