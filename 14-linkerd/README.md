@@ -2,6 +2,7 @@
 
 * Download linkerd CLI: https://linkerd.io/2/getting-started/#step-1-install-the-cli
 * Check if everything is correct for LinkerD
+* For Kubernetes >=1.17.0 the Clock Skew error can be ignored
 ```
 linkerd check --pre
 ```

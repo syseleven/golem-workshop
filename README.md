@@ -43,6 +43,6 @@ https://speakerdeck.com/bastianhofmann/dive-in-workshop-kubernetes
 * https://gitlab.com/bashofmann/angular-test-app-finished
 * https://github.com/kelseyhightower/kubernetes-the-hard-way
 * https://k8s.af/
-* https://k9ss.io/
+* https://github.com/derailed/k9s
 * https://github.com/ramitsurana/awesome-kubernetes
 * https://github.com/int128/kubelogin

@@ -3,14 +3,10 @@
 * Install Helm: https://docs.helm.sh/using_helm/#installing-helm
 
 ```
-helm init
-```
-```
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-```
-```
 helm repo update
 ```
+
 * Replace all occurrences of `CHANGEME` in values.yaml
 
 * Install external-dns with Helm:

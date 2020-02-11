@@ -22,3 +22,9 @@ kubectl config set-context admin@k8s-workshop1/workshop<X> --namespace=web-appli
 ```
 cat ~/.kube/config
 ```
+
+* Verify that helm is installed (should be 3.x.x)
+```
+helm version
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
+```
