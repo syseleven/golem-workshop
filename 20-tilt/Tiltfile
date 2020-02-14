@@ -9,8 +9,8 @@ k8s_yaml(hello_svc_yaml)
 
 
 docker_build('bashofmann/k8s-workshop-quote-svc', './src/quote-svc', live_update=[
-   fall_back_on(['src/quote-svc/package.json', 'src/quote-svc/package-lock.json']),
-   sync('src/quote-svc', '/app/'),
+   fall_back_on(['./src/quote-svc/package.json', './src/quote-svc/package-lock.json']),
+   sync('./src/quote-svc', '/app/'),
 ])
 
 quote_svc_yaml = local('helm template quote-svc helm-charts/quote-svc -f ./quote-svc-values.yaml')
@@ -20,8 +20,8 @@ k8s_yaml(quote_svc_yaml)
 
 
 docker_build('bashofmann/k8s-workshop-web-application', './src/web-application', live_update=[
-  fall_back_on(['src/web-application/composer.json', 'src/web-application/composer.lock']),
-  sync('src/web-application', '/var/www/html/'),
+  fall_back_on(['./src/web-application/composer.json', './src/web-application/composer.lock']),
+  sync('./src/web-application', '/var/www/html/'),
   restart_container(),
 ])
 
