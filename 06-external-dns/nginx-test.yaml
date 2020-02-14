@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: nginx
 spec:
+  replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: nginx
@@ -14,8 +17,26 @@ spec:
       containers:
       - image: nginx
         name: nginx
+        volumeMounts:
+          - mountPath: /etc/data
+            name: data
         ports:
         - containerPort: 80
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: nginx-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: Service
