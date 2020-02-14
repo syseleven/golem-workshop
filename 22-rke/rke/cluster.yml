@@ -1,0 +1,17 @@
+nodes:
+- address: xxx
+  internal_address: xxx
+  role:
+    - controlplane
+    - etcd
+    - worker
+  user: kubernetes
+- address: xxx
+  internal_address: xxx
+  role:
+    - controlplane
+    - etcd
+    - worker
+  user: kubernetes
+ssh_agent_auth: true
+kubernetes_version: v1.16.6-rancher1-2
