@@ -1,6 +1,3 @@
-image:
-  tag: 0.5.17-debian-9-r50
-
 ## This controls which types of resource external-dns should 'watch' for new
 ## DNS entries.
 sources:
