@@ -30,9 +30,6 @@ helm upgrade --install --namespace cert-manager --version v0.12.0 cert-manager j
 
 ```
 kubectl apply -f route53/credentials-secret.yaml
-```
-
-```
 kubectl apply -f route53/clusterissuer.yaml
 ```
 
