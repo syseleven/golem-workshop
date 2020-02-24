@@ -7,7 +7,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 ```
 
-* Replace all occurrences of `CHANGEME` in values.yaml
+* Replace all occurrences of `CHANGEME` in values.yaml with the provided secrets
 
 * Install external-dns with Helm:
 
@@ -17,6 +17,8 @@ kubectl create namespace external-dns
 ```
 helm upgrade --install external-dns --namespace=external-dns -f values.yaml stable/external-dns
 ```
+
+* Replace occurrence of `YOUR_NAME` in values.yaml
 
 * Deploy nginx test with dns entry:
 
