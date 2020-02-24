@@ -24,5 +24,3 @@ Get ClusterRole
 ```
 kubectl get clusterrole external-dns -n external-dns -o yaml
 ```
-
-Use token in local kubeconfig
