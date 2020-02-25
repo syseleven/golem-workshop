@@ -19,7 +19,7 @@ Name: `flux-state`
 
 ````
 kubectl create namespace flux-stage
-helm upgrade --install flux-stage --namespace flux-stage --set git.url=git@$GIT_REPO --set git.path=stage --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=stage --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
+helm upgrade --install flux-stage --namespace flux-stage --set git.url=git@$GIT_REPO --set git.path=stage --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=flux-stage --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
 ````
 
 # Install flux client for Mac with brew
@@ -28,7 +28,7 @@ helm upgrade --install flux-stage --namespace flux-stage --set git.url=git@$GIT_
 brew install fluxctl
 ````
 
-# fetch ssh pub key from flux and add it to github
+# fetch ssh pub key from flux and add it to the git repository
 
 ```
 fluxctl identity --k8s-fwd-ns flux-stage
@@ -40,10 +40,10 @@ Open GitHub, navigate to your fork, go to Setting > Deploy keys, click on Add de
 
 ````
 kubectl create namespace flux-prod
-helm upgrade --install flux-prod --namespace flux-prod --set git.url=$GIT_REPO --set git.path=prod --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=prod --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
+helm upgrade --install flux-prod --namespace flux-prod --set git.url=$GIT_REPO --set git.path=prod --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=flux-prod --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
 ````
 
-# fetch ssh pub key from flux and add it to github
+# fetch ssh pub key from flux and add it to the git repository
 
 ```
 fluxctl identity --k8s-fwd-ns flux-prod
@@ -53,16 +53,24 @@ fluxctl identity --k8s-fwd-ns flux-prod
 
 # show running controllers
 
+```
 fluxctl --k8s-fwd-ns flux-stage list-controllers -a
+```
 
 # fetch ssh pub key from flux
 
+```
 fluxctl --k8s-fwd-ns flux-stage identity
+```
 
 # force sync from git repo
 
+```
 fluxctl --k8s-fwd-ns flux-stage sync
+```
 
 # automate nginx ingress deployment
 
+```
 fluxctl --k8s-fwd-ns flux-stage automate --workspace=webapp:deployment/webapp
+```
