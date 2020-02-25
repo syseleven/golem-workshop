@@ -19,7 +19,7 @@ Name: `flux-state`
 
 ````
 kubectl create namespace stage
-helm upgrade --install flux-stage --namespace flux-stage --set git.url=git@github.com:bashofmann/flux-state --set git.path=stage --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=stage --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s weaveworks/flux
+helm upgrade --install flux-stage --namespace flux-stage --set git.url=git@$GIT_REPO --set git.path=stage --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=stage --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
 ````
 
 # Install flux client for Mac with brew
@@ -40,7 +40,7 @@ Open GitHub, navigate to your fork, go to Setting > Deploy keys, click on Add de
 
 ````
 kubectl create namespace prod
-helm upgrade --install flux-prod --namespace flux-prod --set git.url=git@github.com:bashofmann/flux-state --set git.path=prod --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=prod --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s weaveworks/flux
+helm upgrade --install flux-prod --namespace flux-prod --set git.url=$GIT_REPO --set git.path=prod --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=prod --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
 ````
 
 # fetch ssh pub key from flux and add it to github
