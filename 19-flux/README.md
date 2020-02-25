@@ -7,9 +7,9 @@ helm repo up
 
 # Install crd definitions
 
-````
-kubectl apply -f https://raw.githubusercontent.com/weaveworks/flux/master/deploy-helm/flux-helm-release-crd.yaml
-````
+```
+kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/master/deploy/flux-helm-release-crd.yaml
+```
 
 # Create github repo
 
