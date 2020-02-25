@@ -1,76 +1,68 @@
 # Add weaveworks repo to helm and update
 
-```
+```sh
 helm repo add fluxcd https://charts.fluxcd.io
 helm repo up
-````
+```
 
 # Install crd definitions
 
-```
+```sh
 kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/master/deploy/flux-helm-release-crd.yaml
 ```
 
 # Create github repo
 
-Name: `flux-state`
+Fork it from https://github.com/fluxcd/flux-get-started
 
 # Install flux operator for stage
 
-````
-kubectl create namespace flux-stage
-helm upgrade --install flux-stage --namespace flux-stage --set git.url=git@$GIT_REPO --set git.path=stage --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=flux-stage --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
-````
+```sh
+kubectl create namespace flux
+helm upgrade -i flux fluxcd/flux \
+--set helmOperator.create=true \
+--set helmOperator.createCRD=false \
+--set git.url=git@github.com:YOURUSER/flux-get-started \
+--namespace flux
+```
 
 # Install flux client for Mac with brew
 
-````
+```sh
 brew install fluxctl
-````
+```
 
 # fetch ssh pub key from flux and add it to the git repository
 
-```
-fluxctl identity --k8s-fwd-ns flux-stage
+```sh
+fluxctl identity --k8s-fwd-ns flux
 ```
 
 Open GitHub, navigate to your fork, go to Setting > Deploy keys, click on Add deploy key, give it a Title, check Allow write access, paste the Flux public key and click Add key.
-
-# Install flux operator for prod
-
-````
-kubectl create namespace flux-prod
-helm upgrade --install flux-prod --namespace flux-prod --set git.url=$GIT_REPO --set git.path=prod --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=flux-prod --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
-````
-
-# fetch ssh pub key from flux and add it to the git repository
-
-```
-fluxctl identity --k8s-fwd-ns flux-prod
-```
 
 # fluxctl client commands
 
 # show running controllers
 
-```
-fluxctl --k8s-fwd-ns flux-stage list-controllers -a
+```sh
+fluxctl --k8s-fwd-ns flux list-workloads -a
 ```
 
 # fetch ssh pub key from flux
 
-```
-fluxctl --k8s-fwd-ns flux-stage identity
+```sh
+fluxctl --k8s-fwd-ns flux identity
 ```
 
 # force sync from git repo
 
-```
-fluxctl --k8s-fwd-ns flux-stage sync
+```sh
+fluxctl --k8s-fwd-ns flux sync
 ```
 
-# automate nginx ingress deployment
+# automate mongodb helm release
 
+```sh
+fluxctl --k8s-fwd-ns flux automate -w demo:helmrelease/mongodb
 ```
-fluxctl --k8s-fwd-ns flux-stage automate --workspace=webapp:deployment/webapp
-```
+
