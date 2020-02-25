@@ -39,7 +39,7 @@ Open GitHub, navigate to your fork, go to Setting > Deploy keys, click on Add de
 # Install flux operator for prod
 
 ````
-kubectl create namespace prod
+kubectl create namespace flux-prod
 helm upgrade --install flux-prod --namespace flux-prod --set git.url=$GIT_REPO --set git.path=prod --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=prod --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
 ````
 
