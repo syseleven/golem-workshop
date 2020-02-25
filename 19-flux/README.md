@@ -18,7 +18,7 @@ Name: `flux-state`
 # Install flux operator for stage
 
 ````
-kubectl create namespace stage
+kubectl create namespace flux-stage
 helm upgrade --install flux-stage --namespace flux-stage --set git.url=git@$GIT_REPO --set git.path=stage --set helmOperator.create=true --set helmOperator.createCRD=false --set helmOperator.allowNamespace=stage --set helmOperator.chartsSyncInterval=30s --set git.pollInterval=30s --set registry.pollInterval=30s fluxcd/flux
 ````
 
