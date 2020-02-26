@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: web-application
-          image: bashofmann/k8s-workshop-web-application:1.0.0
+          image: syseleven/k8s-workshop-web-application:1.0.0
           ports:
             - containerPort: 80
               name: http

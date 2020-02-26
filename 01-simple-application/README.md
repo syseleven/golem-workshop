@@ -3,11 +3,11 @@
 * Install Docker: https://docs.docker.com/install/
 * Build docker image
 ```
-docker build -t bashofmann/k8s-workshop-web-application:1.0.0 web-application/
+docker build -t syseleven/k8s-workshop-web-application:1.0.0 web-application/
 ```
 * Run docker image locally
 ```
-docker run --rm -p 8080:80 bashofmann/k8s-workshop-web-application:1.0.0
+docker run --rm -p 8080:80 syseleven/k8s-workshop-web-application:1.0.0
 ```
 * Go to http://localhost:8080
 * Deploy application
