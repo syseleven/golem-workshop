@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: bashofmann/k8s-workshop-hello-svc
+  repository: morre/k8s-workshop-hello-svc
   tag: stable
   pullPolicy: IfNotPresent
 

@@ -1,4 +1,4 @@
-# 7. External DNS
+# 6. External DNS
 
 * Install Helm: https://docs.helm.sh/using_helm/#installing-helm
 
@@ -18,10 +18,10 @@ kubectl create namespace external-dns
 helm upgrade --install external-dns --namespace=external-dns -f values.yaml stable/external-dns
 ```
 
-* Replace occurrence of `YOUR_NAME` in values.yaml
+* Replace occurrence of `YOUR_NAME` in nginx-test.yaml
 
 * Deploy nginx test with dns entry:
 
 ```
-kubectl apply -f nginx-test.yaml
+kubectl apply -f nginx-test.yaml --namespace web-application
 ```

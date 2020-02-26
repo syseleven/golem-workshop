@@ -1,3 +1,4 @@
 image:
   tag: 5.0.0
+  repository: morre/k8s-workshop-hello-svc
 replicaCount: 1
