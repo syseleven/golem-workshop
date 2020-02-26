@@ -1,11 +1,12 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: nginx
   name: nginx
 spec:
-  replicas: 1
-  strategy:
-    type: Recreate
+  replicas: 2
   selector:
     matchLabels:
       app: nginx
@@ -15,28 +16,33 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx
-        name: nginx
-        volumeMounts:
-          - mountPath: /etc/data
-            name: data
+      - name: hello
+        image: syseleven/metakube-hello:1.0.0
         ports:
-        - containerPort: 80
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: nginx-data
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nginx-data
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            memory: 128Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 1
+          failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service
@@ -52,4 +58,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 8080
