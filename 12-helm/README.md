@@ -37,7 +37,7 @@ helm kubeval helm-charts/hello-svc
 * Install helm-diff plugin
 
 ```
-helm plugin install https://github.com/databus23/helm-diff --version v2.11.0+5
+helm plugin install https://github.com/databus23/helm-diff --version v3.1.0
 ```
 * Change something in the hello-svc chart
 * Run helm-diff
