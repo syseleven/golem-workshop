@@ -1,6 +1,6 @@
 # cert-manager
 
-* Install and configure cert-manager for AWS Route53
+## Install and configure cert-manager
 
 ```
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
@@ -22,6 +22,8 @@ kubectl create namespace cert-manager
 helm upgrade --install --namespace cert-manager --version v0.12.0 cert-manager jetstack/cert-manager
 ```
 
+## Configuration for route53
+
 * Add AWS Secret Key to `route53/credentials-secret.yaml`
 
 * Add AWS Access Key to `route53/clusterissuer.yaml`
@@ -39,25 +41,8 @@ kubectl apply -f route53/clusterissuer.yaml
 ```
 kubectl apply -f route53/certificate.yaml
 ```
-##########################################################################################################################
 
-* Install and configure cert-manager for designate
-
-```
-kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
-```
-
-```
-helm repo add jetstack https://charts.jetstack.io
-```
-
-```
-helm repo update
-```
-
-```
-helm upgrade --install --namespace cert-manager --version v0.12.0 cert-manager jetstack/cert-manager
-```
+## Configuration for designate
 
 * Clone the designate certmanger repository and follow the install instructions
 
