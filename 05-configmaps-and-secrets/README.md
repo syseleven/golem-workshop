@@ -1,12 +1,14 @@
 # ConfigMaps and Secrets
 
 * Deploy application
-```
+
+```sh
 kubectl apply -f web-application/deployment/
 ```
 
 * Show ConfigMap and Secret
-```
+
+```sh
 kubectl get configmap,secret
 kubectl describe configmaps web-application-config
 kubectl describe secrets web-application-secret

@@ -1,21 +1,23 @@
-# Add weaveworks repo to helm and update
+# Flux
+
+## Add weaveworks repo to helm and update
 
 ```sh
 helm repo add fluxcd https://charts.fluxcd.io
 helm repo up
 ```
 
-# Install crd definitions
+## Install Custom Resource Definitions
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/master/deploy/flux-helm-release-crd.yaml
 ```
 
-# Create github repo
+## Create github repo
 
 Fork it from https://github.com/fluxcd/flux-get-started
 
-# Install flux operator for stage
+## Install flux operator for stage
 
 ```sh
 kubectl create namespace flux
@@ -26,13 +28,13 @@ helm upgrade -i flux fluxcd/flux \
 --namespace flux
 ```
 
-# Install flux client for Mac with brew
+## Install flux client for Mac with brew
 
 ```sh
 brew install fluxctl
 ```
 
-# fetch ssh pub key from flux and add it to the git repository
+## fetch ssh pub key from flux and add it to the git repository
 
 ```sh
 fluxctl identity --k8s-fwd-ns flux
@@ -40,29 +42,28 @@ fluxctl identity --k8s-fwd-ns flux
 
 Open GitHub, navigate to your fork, go to Setting > Deploy keys, click on Add deploy key, give it a Title, check Allow write access, paste the Flux public key and click Add key.
 
-# fluxctl client commands
+## fluxctl client commands
 
-# show running controllers
+### show running controllers
 
 ```sh
 fluxctl --k8s-fwd-ns flux list-workloads -a
 ```
 
-# fetch ssh pub key from flux
+### fetch ssh pub key from flux
 
 ```sh
 fluxctl --k8s-fwd-ns flux identity
 ```
 
-# force sync from git repo
+### force sync from git repo
 
 ```sh
 fluxctl --k8s-fwd-ns flux sync
 ```
 
-# automate mongodb helm release
+### automate mongodb helm release
 
 ```sh
 fluxctl --k8s-fwd-ns flux automate -w demo:helmrelease/mongodb
 ```
-
