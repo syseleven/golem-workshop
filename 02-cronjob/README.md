@@ -1,4 +1,4 @@
-## 2. Simple CronJob
+# CronJobs
 
 * Create cronjob
 ```

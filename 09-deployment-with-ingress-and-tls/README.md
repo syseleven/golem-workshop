@@ -1,4 +1,4 @@
-# 10. Deployment with Ingress and TLS
+# Deployment with Ingress and TLS
 
 * Edit hostnames in `web-application/deployment/ingress.yaml`
 * Deploy application

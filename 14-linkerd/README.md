@@ -1,4 +1,4 @@
-# 15. LinkerD Service Mesh
+# LinkerD Service Mesh
 
 * Download linkerd CLI: https://linkerd.io/2/getting-started/#step-1-install-the-cli
 * Check if everything is correct for LinkerD

@@ -1,4 +1,4 @@
-# 11. Connection application to the database
+# Connection application to the database
 
 * Deploy application
 ```

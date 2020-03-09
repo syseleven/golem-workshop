@@ -1,4 +1,4 @@
-# 5. Production-grade Deployments
+# Production-grade Deployments
 
 * Deploy application
 ```

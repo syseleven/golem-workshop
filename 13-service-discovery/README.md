@@ -1,4 +1,4 @@
-# 14. Service discovery
+# Service discovery
 
 * Deploy application
 ```

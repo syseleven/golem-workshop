@@ -1,4 +1,4 @@
-# 9. Nginx Ingress Controller
+# nginx Ingress Controller
 
 * Install nginx ingress controller:
 

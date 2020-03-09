@@ -1,4 +1,4 @@
-# 6. External DNS
+# External DNS
 
 * Install Helm: https://docs.helm.sh/using_helm/#installing-helm
 

@@ -1,4 +1,4 @@
-# 18. Logging Stack
+# Logging Stack
 
 * Install ElasticSearch
 ```

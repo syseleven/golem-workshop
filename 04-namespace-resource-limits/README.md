@@ -1,4 +1,4 @@
-# 4. Namespace Resource Limits
+# Namespace Resource Limits
 
 
 ## Create namespace example

@@ -1,4 +1,4 @@
-## 1. Simple Web Application
+# Simple Web Application
 
 * Install Docker: https://docs.docker.com/install/
 * Build docker image

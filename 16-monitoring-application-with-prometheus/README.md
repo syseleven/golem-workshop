@@ -1,4 +1,4 @@
-## Helm
+# Monitoring the application with prometheus
 
 * Update quote-svc
 ```

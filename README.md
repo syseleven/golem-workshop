@@ -1,9 +1,5 @@
 # golem-workshop
 
-## Slides
-
-https://speakerdeck.com/bastianhofmann/dive-in-workshop-kubernetes
-
 ## Additional tooling and resources
 
 * https://github.com/ahmetb/kubectx

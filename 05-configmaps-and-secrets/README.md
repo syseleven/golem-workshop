@@ -1,4 +1,4 @@
-## 3. ConfigMaps and Secrets
+# ConfigMaps and Secrets
 
 * Deploy application
 ```

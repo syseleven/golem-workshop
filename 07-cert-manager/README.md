@@ -1,4 +1,4 @@
-# 7. cert-manager
+# cert-manager
 
 * Install and configure cert-manager for AWS Route53
 
