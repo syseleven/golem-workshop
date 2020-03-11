@@ -27,3 +27,9 @@ kubectl get pods
 kubectl describe pods
 kubectl logs <HELLO_JOBPOD_NAME>
 ```
+
+* kubectl explain
+
+```sh
+kubectl explain cronjobs.spec
+```

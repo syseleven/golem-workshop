@@ -22,7 +22,7 @@
 * https://github.com/presslabs/mysql-operator
 * https://github.com/coreos/prometheus-operator
 * https://prometheus.io/
-* http://grafana.com
+* https://grafana.com
 * https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/
 * https://operatorhub.io/
 * https://keel.sh/
