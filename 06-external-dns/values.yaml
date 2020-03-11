@@ -7,9 +7,6 @@ sources:
 ## The DNS provider where the DNS records will be created (options: aws, digitalocean, google, inmemory, azure, rfc2136 )
 provider: aws
 
-#digitalocean:
-#  apiToken: CHANGEME
-
 # AWS Access keys to inject as environment variables
 aws:
   credentials:
