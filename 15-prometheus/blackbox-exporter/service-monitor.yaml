@@ -27,4 +27,5 @@ spec:
     matchNames:
       - monitoring
   selector:
-    app: blackbox-exporter
+    matchLabels:
+      app: blackbox-exporter
