@@ -2,6 +2,8 @@
 
 Update domain names in values.yaml and install prometheus
 
+* Change DOMAINNAME entries in values.yaml
+
 ```sh
 kubectl create namespace monitoring
 kubectl apply -f basic-auth.yaml
