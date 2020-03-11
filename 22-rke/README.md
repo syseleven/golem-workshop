@@ -5,10 +5,13 @@ https://rancher.com/docs/rke/latest/en/
 
 Add SSH public key to `terraform/instance/cloud-init`.
 
+Download and source OpenStack rc file.
+
 Create VMs with terraform:
 
 ```sh
 cd terraform
+terraform init
 terraform plan
 terraform apply
 ```
