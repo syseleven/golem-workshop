@@ -16,7 +16,7 @@ variable "security_groups" {
 
 resource "openstack_compute_instance_v2" "rke" {
   name = var.name
-  image_name = "Ubuntu Bionic 18.04 (2020-02-11)"
+  image_name = "Ubuntu Bionic 18.04 (2020-03-12)"
   flavor_name = var.flavor_name
   user_data = file("instance/cloud-init")
   security_groups = var.security_groups
