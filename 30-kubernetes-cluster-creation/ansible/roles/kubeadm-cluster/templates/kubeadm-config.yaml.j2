@@ -27,6 +27,9 @@ apiServer:
   certSANs:
   - "{{ ansible_hostname }}"
   - "{{ hostvars[inventory_hostname].ansible_host }}"
+{% if load_balancer_addr is defined %}
+  - "{{ load_balancer_addr }}"
+{% endif %}
 {% if cloud_provider is defined %}
   extraArgs:
     cloud-provider: "{{ cloud_provider }}"
