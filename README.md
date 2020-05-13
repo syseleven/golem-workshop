@@ -1,5 +1,20 @@
 # golem-workshop
 
+## Workshop requirements
+
+To participate in our workshops you will require the following items on your notebook:
+
+* Windows or MacOS idealy with an administrator access
+* SSH key pair (public and private key) 
+* [Create SSH key pair](https://www.ssh.com/ssh/keygen/)
+* Docker desktop software 
+* [Install Docker desktop Windows](https://docs.docker.com/docker-for-windows/install/)
+* [Install Docker desktop MacOS](https://docs.docker.com/docker-for-mac/install/)
+* kubernetes client software kubectl 
+* [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+* helm client software version 3.x
+* [Install helm](https://helm.sh/docs/intro/install)
+
 ## Additional tooling and resources
 
 * https://github.com/ahmetb/kubectx
