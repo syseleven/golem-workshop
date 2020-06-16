@@ -5,7 +5,8 @@
 * Installation would look like:
 
 ```sh
-helm upgrade --install ghost stable/ghost -f values.yaml
+helm repo add bitnami https://charts.bitnami.com/bitnami // probably already did that
+helm upgrade --install ghost bitnami/ghost -f values.yaml
 ```
 
 Bonus:
