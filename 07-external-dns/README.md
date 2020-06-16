@@ -3,7 +3,7 @@
 * Install Helm: https://docs.helm.sh/using_helm/#installing-helm
 
 ```sh
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
 ```
 
@@ -16,7 +16,7 @@ kubectl create namespace external-dns
 ```
 
 ```sh
-helm upgrade --install external-dns --namespace=external-dns -f values.yaml stable/external-dns
+helm upgrade --install external-dns --namespace=external-dns -f values.yaml bitnami/external-dns
 ```
 
 * Replace occurrence of `YOUR_NAME` in nginx-test.yaml
