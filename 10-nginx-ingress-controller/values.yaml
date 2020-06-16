@@ -5,10 +5,6 @@ controller:
   extraArgs:
     default-ssl-certificate: default/metakube-tls-certs
 
-  ## Required only if defaultBackend.enabled = false
-  ## Must be <namespace>/<service_name>
-  defaultBackendService: ""
-
   ## Name of the ingress class to route through this controller
   ingressClass: nginx
 
