@@ -34,7 +34,7 @@ $app->get('/', function (Request $request, Response $response) {
 
     $quotes = json_decode($quoteSvcResponse->getBody());
     $response->getBody()->write('<p>' . $helloSvcResponse->getBody() . '</p>');
-    $response->getBody()->write('<b>' . $quotes[0]->title . ' said:</b> ' . $quotes[0]->content);
+    $response->getBody()->write('<b>' . $quotes[0]->title . ' said:</b> ' . $quotes[0]->description);
 
     return $response;
 });
