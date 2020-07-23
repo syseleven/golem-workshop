@@ -4,5 +4,9 @@
 * Deploy application
 
 ```sh
-kubectl apply -f web-application/deployment/
+# with nginx
+kubectl apply -f web-application/deployment/nginx-ingress.yaml
+
+# with traefik
+kubectl apply -f web-application/deployment/traefik-ingress.yaml
 ```
