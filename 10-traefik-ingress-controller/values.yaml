@@ -1,0 +1,13 @@
+rbac:
+  enabled: true
+
+kubernetes:
+  ingressClass: traefik
+  ingressEndpoint:
+    publishedService: traefik/traefik
+
+ssl:
+  enabled: true
+
+dashboard:
+  enabled: true
