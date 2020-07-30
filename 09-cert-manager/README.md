@@ -3,10 +3,6 @@
 ## Install and configure cert-manager
 
 ```sh
-kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
-```
-
-```sh
 helm repo add jetstack https://charts.jetstack.io
 ```
 
@@ -19,7 +15,7 @@ kubectl create namespace cert-manager
 ```
 
 ```sh
-helm upgrade --install --namespace cert-manager --version v0.12.0 cert-manager jetstack/cert-manager
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v0.15.2 --set installCRDs=true
 ```
 
 ## Configuration for route53
