@@ -1,6 +1,10 @@
 # Monitoring with prometheus
 
-* Change DOMAINNAME entries in values.yaml
+- Change DOMAINNAME entries in values.yaml
+
+```
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
+```
 
 ```sh
 kubectl create namespace monitoring
