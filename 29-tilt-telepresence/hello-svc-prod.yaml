@@ -7,4 +7,4 @@ resources:
     memory: 128Mi
 
 image:
-  repository: morre/k8s-workshop-hello-svc
+  repository: mrosin11/k8s-workshop-hello-svc
