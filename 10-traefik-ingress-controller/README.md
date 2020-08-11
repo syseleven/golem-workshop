@@ -4,6 +4,9 @@
 
 ```
 kubectl create namespace traefik
+```
+
+```
 helm upgrade --install --namespace traefik --version 1.86.1 traefik stable/traefik -f values.yaml
 ```
 
