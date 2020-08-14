@@ -1,6 +1,18 @@
 {
   "extends": [
-    "config:base",
-    "prHourlyLimit": 4
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases",
+    ":ignoreUnstable",
+    ":prImmediately",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":updateNotScheduled",
+    ":automergeDisabled",
+    ":ignoreModulesAndTests",
+    ":autodetectPinVersions",
+    ":prHourlyLimit2",
+    ":prConcurrentLimit20",
+    "group:monorepos",
+    "group:recommended",
+    "helpers:disableTypesNodeMajor"
   ]
 }
