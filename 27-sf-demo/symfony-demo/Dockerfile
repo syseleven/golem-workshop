@@ -30,7 +30,7 @@ COPY public /var/www/html/public/
 COPY --from=yarn /var/www/html/public/build/ /var/www/html/public/build/
 
 # Build fpm image
-FROM php:7.3-fpm AS fpm
+FROM php:7.4-fpm AS fpm
 
 # copy needed files from build containers
 COPY --from=yarn /var/www/html/public/build/ /var/www/html/public/build/
