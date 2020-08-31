@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ff5b40f862dc2c7d155e4c315a7226f",
+    "content-hash": "20ef65905af26503b94483f266a69a70",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -6892,28 +6892,28 @@
         },
         {
             "name": "tgalopin/html-sanitizer-bundle",
-            "version": "1.1.3",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tgalopin/html-sanitizer-bundle.git",
-                "reference": "4d6bb56d4fa349d4b0b6c3e46229d6d17dfbbdc2"
+                "reference": "df42087a1b1660eea37032f9ce3dc0997452d3e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tgalopin/html-sanitizer-bundle/zipball/4d6bb56d4fa349d4b0b6c3e46229d6d17dfbbdc2",
-                "reference": "4d6bb56d4fa349d4b0b6c3e46229d6d17dfbbdc2",
+                "url": "https://api.github.com/repos/tgalopin/html-sanitizer-bundle/zipball/df42087a1b1660eea37032f9ce3dc0997452d3e2",
+                "reference": "df42087a1b1660eea37032f9ce3dc0997452d3e2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "symfony/framework-bundle": "^3.4|^4.0",
+                "symfony/framework-bundle": "^3.4|^4.0|^5.0",
                 "tgalopin/html-sanitizer": "^1.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.4",
-                "symfony/form": "^4.1",
-                "symfony/twig-bundle": "^4.1",
-                "symfony/var-dumper": "^4.1"
+                "symfony/form": "^4.1|^5.0",
+                "symfony/twig-bundle": "^4.1|^5.0",
+                "symfony/var-dumper": "^4.1|^5.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -6932,7 +6932,7 @@
                 }
             ],
             "description": "Symfony Bundle for https://github.com/tgalopin/html-sanitizer",
-            "time": "2019-06-06T16:12:07+00:00"
+            "time": "2019-11-23T09:46:29+00:00"
         },
         {
             "name": "twig/extensions",
