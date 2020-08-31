@@ -24,7 +24,7 @@ COPY symfony.lock /var/www/html/
 RUN composer install
 
 # Build nginx image
-FROM nginx:1.17 AS nginx
+FROM nginx:1.19 AS nginx
 
 COPY public /var/www/html/public/
 COPY --from=yarn /var/www/html/public/build/ /var/www/html/public/build/
