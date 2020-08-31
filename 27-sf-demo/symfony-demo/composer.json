@@ -10,7 +10,7 @@
         "doctrine/orm": "2.6.3",
         "erusev/parsedown": "1.7.3",
         "sensio/framework-extra-bundle": "5.4.1",
-        "sensiolabs/security-checker": "5.0.3",
+        "sensiolabs/security-checker": "6.0.3",
         "symfony/asset": "4.3.3",
         "symfony/console": "4.3.3",
         "symfony/dotenv": "4.3.3",
