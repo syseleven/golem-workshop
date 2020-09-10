@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@fortawesome/fontawesome-free": "5.14.0",
-    "@symfony/webpack-encore": "0.28.3",
+    "@symfony/webpack-encore": "0.31.0",
     "bloodhound-js": "1.2.3",
     "bootstrap-sass": "3.4.1",
     "bootstrap-tagsinput": "0.7.1",
