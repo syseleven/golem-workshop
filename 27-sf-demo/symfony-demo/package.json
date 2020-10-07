@@ -9,7 +9,7 @@
     "core-js": "3.6.5",
     "eonasdan-bootstrap-datetimepicker": "4.17.47",
     "highlight.js": "9.18.3",
-    "imports-loader": "0.8.0",
+    "imports-loader": "1.2.0",
     "jquery": "3.5.1",
     "lato-font": "3.0.0",
     "node-sass": "4.14.1",
