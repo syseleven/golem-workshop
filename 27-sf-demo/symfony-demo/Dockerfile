@@ -14,7 +14,7 @@ COPY assets /var/www/html/assets/
 RUN mkdir -p /var/www/html/public/build && yarn run build
 
 # Install PHP dependencies
-FROM composer:1.10.10 AS composer
+FROM composer:1.10.17 AS composer
 
 WORKDIR /var/www/html
 
