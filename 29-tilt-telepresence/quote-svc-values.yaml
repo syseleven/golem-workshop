@@ -1,4 +1,0 @@
-image:
-  tag: 8.2.0
-  repository: mrosin11/k8s-workshop-quote-svc
-replicaCount: 1

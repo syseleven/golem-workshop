@@ -1,4 +1,0 @@
-image:
-  tag: 5.0.0
-  repository: mrosin11/k8s-workshop-hello-svc
-replicaCount: 1

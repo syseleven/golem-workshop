@@ -1,61 +1,34 @@
-# Network policies
+# network-policies
 
-- Create test namespace
+* Deny all traffic to web-application
 
-```sh
-kubectl create namespace network-policy-test
+```
+kubectl apply -f deny-all.yaml
 ```
 
-- Call nginx with curl from network-policy-test namespace
+* Start a pod with Ubuntu any other namespace **in a different shell**
 
-```sh
-kubectl --namespace network-policy-test run curl --image=radial/busyboxplus:curl --restart=Never --rm -i --command curl -- http://nginx.web-application -v --connect-timeout 5
+```
+kubectl run -n default -it --image ubuntu:20.04 network-policy-test01 -- bash
+
+# Install curl & dnsutils
+apt update && DEBIAN_FRONTEND=noninteractive apt-get -y install curl dnsutils
+
+# In the pod: Try to curl your web-application
+curl web-application.web-application
 ```
 
-- Create network policy that forbids call
+* See that it times out
 
-```sh
-kubectl apply -f network-policy.yaml
+* Edit the namespace and add the label `network-policy/web-application: allow`, then deploy the allow-web-application.yaml
+
+```
+kubectl edit namespace default
+kubectl apply -f allow-web-application.yaml
 ```
 
-- See that connection can not be established
+* In your test pod, see that it works again:
 
-```sh
-kubectl --namespace network-policy-test run curl --image=radial/busyboxplus:curl --restart=Never --rm -i --command curl -- http://nginx.web-application -v --connect-timeout 5
 ```
-
-- label namespace
-
-```sh
-kubectl label namespace network-policy-test access=allowed
-```
-
-- See that connection works again
-
-```sh
-kubectl --namespace network-policy-test run curl --image=radial/busyboxplus:curl --restart=Never --rm -i --command curl -- http://nginx.web-application -v --connect-timeout 5
-```
-
-- remove label
-
-```sh
-kubectl label namespace network-policy-test access-
-```
-
-- See that connection can not be established
-
-```sh
-kubectl --namespace network-policy-test run curl --image=radial/busyboxplus:curl --restart=Never --rm -i --command curl -- http://nginx.web-application -v --connect-timeout 5
-```
-
-- Delete network policy that forbids call
-
-```sh
-kubectl delete -f network-policy.yaml
-```
-
-- See that connection works again
-
-```sh
-kubectl --namespace network-policy-test run curl --image=radial/busyboxplus:curl --restart=Never --rm -i --command curl -- http://nginx.web-application -v --connect-timeout 5
+curl web-application.web-application
 ```

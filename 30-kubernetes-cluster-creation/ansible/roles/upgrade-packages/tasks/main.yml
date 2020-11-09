@@ -1,6 +1,0 @@
----
-
-# Upgrade packages and autoremove stale packages
-- import_tasks: upgrade.yml
-  tags:
-   - upgrade-packages
