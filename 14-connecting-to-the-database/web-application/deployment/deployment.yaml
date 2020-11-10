@@ -40,14 +40,14 @@ spec:
           image: syseleven/k8s-workshop-web-application:7.0.1
           env:
             - name: DB_HOST
-              value: db-mysql
+              value: pxc-db-haproxy
             - name: DB_USER
               value: root
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: ROOT_PASSWORD
-                  name: mysql-secret
+                  key: root
+                  name: pxc-db
           envFrom:
             - configMapRef:
                 name: web-application-config
