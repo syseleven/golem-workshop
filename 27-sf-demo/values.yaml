@@ -6,10 +6,10 @@ replicaCount: 1
 ingress:
   enabled: true
   hosts:
-    - host: symfony-demo.<YOURNAME>.metakube.org
+    - host: symfony-demo-<YOUR_NAME>.workshop.metakube.org
       paths:
         - /
 
   tls:
     - hosts:
-      - symfony-demo.<YOURNAME>.metakube.org
+      - symfony-demo-<YOUR_NAME>.workshop.metakube.org

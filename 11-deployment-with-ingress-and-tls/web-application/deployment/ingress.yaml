@@ -10,9 +10,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - web-application.<YOUR_NAME>.metakube.org
+        - web-application-<YOUR_NAME>.workshop.metakube.org
   rules:
-    - host: web-application.<YOUR_NAME>.metakube.org
+    - host: web-application-<YOUR_NAME>.workshop.metakube.org
       http:
         paths:
           - path: /

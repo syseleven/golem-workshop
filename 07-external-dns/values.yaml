@@ -26,7 +26,7 @@ interval: "1m"
 registry: "txt"
 
 # When using the TXT registry, a name that identifies this instance of ExternalDNS
-txtOwnerId: "CHANGEME"
+txtOwnerId: "workshop"
 
 ## Modify how DNS records are sychronized between sources and providers (options: sync, upsert-only )
 policy: sync

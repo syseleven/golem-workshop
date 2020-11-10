@@ -1,5 +1,7 @@
 # Logging with Loki
 
+**This installation is required only once per cluster.**
+
 ## Install Loki and configure Grafana
 
 ```sh

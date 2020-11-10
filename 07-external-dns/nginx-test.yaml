@@ -49,7 +49,7 @@ kind: Service
 metadata:
   name: nginx
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: nginx.<YOUR_NAME>.metakube.org
+    external-dns.alpha.kubernetes.io/hostname: nginx.workshop.metakube.org
     external-dns.alpha.kubernetes.io/ttl: "60"
 spec:
   selector:

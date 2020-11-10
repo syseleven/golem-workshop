@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: metakube-all
-  namespace: default
+  name: workshop-tls-cert
+  namespace: ingress-nginx
 spec:
-  commonName: '*.<YOUR_NAME>.metakube.org'
+  commonName: '*.workshop.metakube.org'
   dnsNames:
-    - '*.<YOUR_NAME>.metakube.org'
+    - '*.workshop.metakube.org'
   secretName: metakube-tls-certs
   issuerRef:
     name: letsencrypt-prod

@@ -1,9 +1,11 @@
 # Sealed secrets
 
+**This installation is required only once per cluster.**
+
 * Install sealed secrets controller
 
 ```sh
-helm upgrade --install --namespace kube-system sealed-secrets-controller stable/sealed-secrets
+helm upgrade --install --namespace kube-system --version 1.12.0 sealed-secrets-controller stable/sealed-secrets
 ```
 
 * Install kubeseal client https://github.com/bitnami-labs/sealed-secrets#homebrew

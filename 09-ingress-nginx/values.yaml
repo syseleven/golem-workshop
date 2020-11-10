@@ -3,7 +3,7 @@ controller:
     enabled: true
 
   extraArgs:
-    default-ssl-certificate: default/metakube-tls-certs
+    default-ssl-certificate: ingress-nginx/workshop-tls-cert
 
   ## Name of the ingress class to route through this controller
   ingressClass: nginx

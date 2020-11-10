@@ -1,5 +1,7 @@
 # Monitoring with prometheus
 
+**This installation is required only once per cluster.**
+
 - Change DOMAINNAME entries in values.yaml
 
 ```

@@ -1,5 +1,7 @@
 # cert-manager
 
+**This installation is required only once per cluster.**
+
 ## Install and configure cert-manager
 
 ```sh
@@ -15,46 +17,25 @@ kubectl create namespace cert-manager
 ```
 
 ```sh
-helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v0.15.2 --set installCRDs=true
+# You need kubectl v.1.19.0 or newer!
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.0.4 --set installCRDs=true
 ```
 
 ## Configuration for route53
 
-* Add AWS Secret Key to `route53/credentials-secret.yaml`
-
-* Add AWS Access Key to `route53/clusterissuer.yaml`
+* Add AWS Secret Key to `credentials-secret.yaml`
+* Add AWS Access Key to `clusterissuer.yaml`
 
 * Create ClusterIssuer
 
 ```sh
-kubectl apply -f route53/credentials-secret.yaml
-kubectl apply -f route53/clusterissuer.yaml
+kubectl apply -f credentials-secret.yaml
+kubectl apply -f clusterissuer.yaml
 ```
 
 * Change hostnames in `certificate.yaml`
 * Create wildcard certificate
 
 ```sh
-kubectl apply -f route53/certificate.yaml
-```
-
-## Configuration for designate
-
-* Clone the designate certmanger repository and follow the install instructions
-
-```sh
-git clone git@github.com:syseleven/designate-certmanager-webhook.git
-```
-
-* Create ClusterIssuer
-
-```sh
-kubectl apply -f designate/clusterissuer.yaml
-```
-
-* Change hostnames in `certificate.yaml`
-* Create wildcard certificate
-
-```sh
-kubectl apply -f designate/certificate.yaml
+kubectl apply -f certificate.yaml
 ```

@@ -18,13 +18,13 @@ kubectl get namespaces
 * Create Namespace
 
 ```sh
-kubectl create namespace web-application
+kubectl create namespace <YOUR_NAME>
 ```
 
 * Set default namespace to context
 
 ```sh
-kubectl config set-context --current --namespace=web-application
+kubectl config set-context --current --namespace=<YOUR_NAME>
 ```
 
 * See change in kubeconfig
@@ -37,5 +37,5 @@ cat ~/.kube/config
 
 ```sh
 helm version
-helm repo add stable https://kubernetes-charts.storage.googleapis.com
+helm repo add stable https://charts.helm.sh/stable
 ```

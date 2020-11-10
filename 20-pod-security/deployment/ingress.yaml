@@ -8,9 +8,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - security-context-demo.<YOUR_NAME>.metakube.org
+        - security-context-demo-<YOUR_NAME>.workshop.metakube.org
   rules:
-    - host: security-context-demo.<YOUR_NAME>.metakube.org
+    - host: security-context-demo-<YOUR_NAME>.workshop.metakube.org
       http:
         paths:
           - path: /
