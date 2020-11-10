@@ -5,6 +5,7 @@
 * Install sealed secrets controller
 
 ```sh
+helm repo add stable https://charts.helm.sh/stable
 helm upgrade --install --namespace kube-system --version 1.12.0 sealed-secrets-controller stable/sealed-secrets
 ```
 

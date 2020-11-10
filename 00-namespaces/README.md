@@ -37,5 +37,4 @@ cat ~/.kube/config
 
 ```sh
 helm version
-helm repo add stable https://charts.helm.sh/stable
 ```
