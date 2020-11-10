@@ -7,7 +7,7 @@
 ```sh
 helm repo add loki https://grafana.github.io/loki/charts
 helm repo update
-helm upgrade --install loki loki/loki-stack --namespace monitoring -f loki-values.yaml
+helm upgrade --install loki loki/loki-stack --namespace monitoring -f loki-values.yaml --version 2.0.2
 kubectl apply -f datasource.yaml
 ```
 
@@ -15,6 +15,4 @@ kubectl apply -f datasource.yaml
 
 ```sh
 kubectl rollout restart deployment -n monitoring prom-grafana
-# or
-kubectl delete pod -n monitoring -l app=grafana
 ```
