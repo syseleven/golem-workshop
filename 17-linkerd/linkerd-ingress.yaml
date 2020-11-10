@@ -7,13 +7,14 @@ metadata:
     nginx.ingress.kubernetes.io/auth-type: basic
     # name of the secret that contains the user/password definitions
     nginx.ingress.kubernetes.io/auth-secret: basic-auth
+    nginx.ingress.kubernetes.io/upstream-vhost: linkerd-web.linkerd.svc.cluster.local:8084
   namespace: linkerd
 spec:
   tls:
     - hosts:
-        - linkerd-dashboard.<YOUR_NAME>.metakube.org
+        - linkerd-dashboard.workshop.metakube.org
   rules:
-    - host: linkerd-dashboard.<YOUR_NAME>.metakube.org
+    - host: linkerd-dashboard.workshop.metakube.org
       http:
         paths:
           - path: /
