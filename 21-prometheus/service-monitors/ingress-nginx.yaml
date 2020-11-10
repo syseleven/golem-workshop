@@ -2,9 +2,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: nginx-ingress
+  name: ingress-nginx
   labels:
-    app: nginx-ingress
+    app: ingress-nginx
     release: prom
   namespace: monitoring
 spec:
@@ -15,7 +15,7 @@ spec:
       path: /metrics
   namespaceSelector:
     matchNames:
-      - nginx-ingress
+      - ingress-nginx
   selector:
     matchLabels:
       app.kubernetes.io/name: ingress-nginx
