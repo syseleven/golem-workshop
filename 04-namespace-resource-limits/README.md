@@ -12,10 +12,10 @@ kubectl create namespace <YOUR_NAME>-limits
 kubectl apply -f container-limit-range.yml -n <YOUR_NAME>-limits
 ```
 
-Deploy test app
+Deploy test deployment
 
 ```sh
-kubectl run --generator=deployment/apps.v1 test-app --image=nginxdemos/hello --namespace <YOUR_NAME>-limits
+kubectl apply -f test-deployment.yaml --namespace <YOUR_NAME>-limits
 ```
 
 See that default requests and limits have been applied
@@ -33,7 +33,7 @@ kubectl apply -f pod-quota.yml -n <YOUR_NAME>-limits
 Scale up
 
 ```sh
-kubectl scale deployment test-app --replicas 3 --namespace <YOUR_NAME>-limits
+kubectl scale deployment test-deployment --replicas 3 --namespace <YOUR_NAME>-limits
 ```
 
 See that only one pod can be created
@@ -41,9 +41,9 @@ See that only one pod can be created
 Create second deployment
 
 ```sh
-kubectl delete deployment test-app -n <YOUR_NAME>-limits
+kubectl delete -f test-deployment.yaml -n <YOUR_NAME>-limits
 
-kubectl run --generator=run-pod/v1 test-app --image=nginxdemos/hello --namespace <YOUR_NAME>-limits --requests="cpu=2"
+kubectl run test-app --image=nginxdemos/hello --namespace <YOUR_NAME>-limits --requests="cpu=2"
 ```
 
 See that pod can not be created
@@ -51,5 +51,5 @@ See that pod can not be created
 ## Delete limits namespace again
 
 ```sh
-kubectl delete namespace limits
+kubectl delete namespace <YOUR_NAME>-limits
 ```
