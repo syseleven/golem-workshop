@@ -1,14 +1,6 @@
-# Depending on which DNS solution you have installed in your cluster enable the right exporter
-coreDns:
-  enabled: true
-
-kubeDns:
-  enabled: false
-
 # The kube-controller-manager and kube-scheduler are managed and monitored by MetaKube itself
 kubeControllerManager:
   enabled: false
-
 kubeScheduler:
   enabled: false
 
@@ -43,17 +35,14 @@ prometheus:
       # name of the secret that contains the user/password definitions
       nginx.ingress.kubernetes.io/auth-secret: basic-auth
     hosts:
-      - prometheus.<DOMAINNAME>.metakube.org
+      - prometheus.workshop.metakube.org
     tls:
       - hosts:
-          - prometheus.<DOMAINNAME>.metakube.org
+          - prometheus.workshop.metakube.org
 
 defaultRules:
   rules:
     kubernetesResources: true
-
-nodeExporter:
-  enabled: false
 
 prometheusOperator:
   admissionWebhooks:
@@ -63,10 +52,6 @@ prometheusOperator:
 
 grafana:
   adminPassword: admin
-  sidecar:
-    image: syseleven/k8s-sidecar:0.0.18-sys11-3
-  persistence:
-    enabled: false
   ingress:
     enabled: true
     annotations:
@@ -75,10 +60,10 @@ grafana:
       # name of the secret that contains the user/password definitions
       nginx.ingress.kubernetes.io/auth-secret: basic-auth
     hosts:
-      - grafana.<DOMAINNAME>.metakube.org
+      - grafana.workshop.metakube.org
     tls:
       - hosts:
-          - grafana.<DOMAINNAME>.metakube.org
+          - grafana.workshop.metakube.org
   grafana.ini:
     users:
       auto_assign_org_role: Editor
