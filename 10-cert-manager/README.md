@@ -33,7 +33,6 @@ kubectl apply -f credentials-secret.yaml
 kubectl apply -f clusterissuer.yaml
 ```
 
-* Change hostnames in `certificate.yaml`
 * Create wildcard certificate
 
 ```sh
