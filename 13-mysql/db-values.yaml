@@ -1,0 +1,9 @@
+upgradeOptions:
+  apply: disabled
+
+pxc:
+  image:
+    tag: 5.7.31-31.45.2
+  certManager: true
+  persistence:
+    enabled: true
