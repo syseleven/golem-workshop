@@ -9,7 +9,6 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     prometheus: k8s
     release: prom
-  namespace: monitoring
 spec:
   endpoints:
     - interval: 30s
