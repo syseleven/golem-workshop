@@ -33,3 +33,9 @@ kubectl logs <HELLO_JOBPOD_NAME>
 ```sh
 kubectl explain cronjobs.spec
 ```
+
+* Remove cronjob
+
+```sh
+kubectl delete -f cronjob.yaml
+```
