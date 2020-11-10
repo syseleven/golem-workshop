@@ -23,5 +23,5 @@ helm upgrade --install fluentd --version 2.4.1 bitnami/fluentd
 
 ```sh
 kubectl apply -f basic-auth.yaml
-helm upgrade --install kibana --version 7.9.3 elastic/kibana -f kibana/values.yaml
+helm upgrade --install kibana --version 7.9.3 elastic/kibana
 ```
