@@ -14,6 +14,10 @@ kubectl get serviceaccount external-dns -n external-dns -o yaml
 
 * Get token of service account
 
+```sh
+kubectl get secrets -n external-dns external-dns-token-xxxxx
+```
+
 * Get ClusterRoleBinding
 
 ```sh
