@@ -6,17 +6,14 @@
 kubectl apply -f deny-all.yaml
 ```
 
-* Start a pod with Ubuntu any other namespace **in a different shell**
+* Start a busybox container pod in another namespace **in a different shell**
 
 ```
 kubectl create namespace <YOUR_NAME>-policy
-kubectl run -n default -it --image ubuntu:20.04 network-policy-test-<YOUR_NAME>01 -- bash
+kubectl run -n <YOUR_NAME>-policy -it --image busybox network-policy-test -- sh
 
-# Install curl & dnsutils
-apt update && DEBIAN_FRONTEND=noninteractive apt-get -y install curl dnsutils
-
-# In the pod: Try to curl your web-application
-curl web-application.<YOUR_NAME>
+# In the pod: Try to reach your web-application
+wget web-application.<YOUR_NAME>
 ```
 
 * See that it times out

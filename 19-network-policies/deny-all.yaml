@@ -2,8 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: ingress-deny-all
-  namespace: <YOUR_NAME>
 spec:
-  podSelector: {}
+  podSelector:
+    matchLabels:
+      app: web-application
   policyTypes:
   - Ingress
