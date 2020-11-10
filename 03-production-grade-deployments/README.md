@@ -21,13 +21,6 @@ kubectl describe horizontalpodautoscalers web-application
 kubectl top pods
 ```
 
-* Watch pods and create traffic
-
-```sh
-watch kubectl get pods
-ab -c 100 -n 1000 http://<IP_ADDRESS>/
-```
-
 * Remove autoscaler
 
 ```sh
