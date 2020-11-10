@@ -15,7 +15,7 @@ helm upgrade --install hello-svc helm-charts/hello-svc -f hello-svc-values.yaml
 * Print YAML that helm would apply
 
 ```sh
- helm template hello-svc helm-charts/hello-svc -f hello-svc-values.yaml -f hello-svc-stage.yaml --set image.tag=10.0.1
+helm template hello-svc helm-charts/hello-svc -f hello-svc-values.yaml -f hello-svc-stage.yaml --set image.tag=10.0.1
 ```
 
 * Test installation
@@ -39,7 +39,7 @@ helm kubeval helm-charts/hello-svc
 * Install helm-diff plugin
 
 ```sh
-helm plugin install https://github.com/databus23/helm-diff --version v3.1.0
+helm plugin install https://github.com/databus23/helm-diff
 ```
 
 * Change something in the hello-svc chart
