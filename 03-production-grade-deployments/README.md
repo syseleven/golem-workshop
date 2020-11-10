@@ -6,20 +6,6 @@
 kubectl apply -f web-application/deployment/
 ```
 
-* Check pods and figure out why pods are pending
-
-```sh
-kubectl get pods
-kubectl describe pods
-```
-
-* Label Nodes
-
-```sh
-kubectl get nodes
-kubectl label nodes --all storagetype=ssd
-```
-
 * See that pods are schedules
 
 ```sh
