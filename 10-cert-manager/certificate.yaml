@@ -7,7 +7,7 @@ spec:
   commonName: '*.workshop.metakube.org'
   dnsNames:
     - '*.workshop.metakube.org'
-  secretName: metakube-tls-certs
+  secretName: workshop-tls-cert
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
