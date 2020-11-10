@@ -59,7 +59,7 @@ kubectl logs <WEB_APPLICATION_POD_NAME>
 * Get shell in pod
 
 ```sh
-kubectl exec -it <WEB_APPLICATION_POD_NAME> /bin/bash
+kubectl exec -it <WEB_APPLICATION_POD_NAME> -- /bin/bash
 ```
 
 * Port Forwarding
