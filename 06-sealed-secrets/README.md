@@ -13,13 +13,13 @@ helm upgrade --install --namespace kube-system --version 1.12.0 sealed-secrets-c
 * Encrypt secret
 
 ```sh
-kubectl create secret generic my-secret --dry-run --from-literal=secret=value -o json | kubeseal > encrypted-my-secret.yaml
+kubectl create secret generic my-secret --dry-run=client --from-literal=secret=value -o json | kubeseal > sealed-secret.yaml
 ```
 
 * Create sealed secret in cluster
 
 ```sh
-kubectl apply -f encrypted-my-secret.yaml
+kubectl apply -f sealed-secret.yaml
 ```
 
 * Check that secret was created by the controller
