@@ -28,7 +28,9 @@ kubectl apply -f linkerd-ingress.yaml
 Add this anntation to pods
 
 ```sh
-linkerd.io/inject: enabled
+kubectl edit deployment web-application
+
+# in metadata.annotations, add a new line with "linkerd.io/inject: enabled"
 ```
 
 Or run
