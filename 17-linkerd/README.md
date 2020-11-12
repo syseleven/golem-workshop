@@ -25,12 +25,13 @@ kubectl apply -f linkerd-ingress.yaml
 
 * Inject LinkerD proxy into existing deployments
 
-Add this anntation to pods
+Add the "linkerd.io/inject: enabled" anntation to pods
 
 ```sh
 kubectl edit deployment web-application
 
 # in metadata.annotations, add a new line with "linkerd.io/inject: enabled"
+# save and close your editor
 ```
 
 Or run
