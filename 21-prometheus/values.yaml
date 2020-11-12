@@ -47,7 +47,7 @@ defaultRules:
 prometheusOperator:
   admissionWebhooks:
     enabled: false
-  tlsProxy:
+  tls:
     enabled: false
 
 grafana:
