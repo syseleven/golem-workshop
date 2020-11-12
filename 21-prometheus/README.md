@@ -14,5 +14,5 @@ kubectl apply -f dashboards/
 kubectl apply -f service-monitors/
 
 # Force reloading of grafana dashboards if needed
-kubectl delete pod -n monitoring -l app.kubernetes.io/name=grafana
+kubectl rollout restart deployment prom-grafana
 ```
