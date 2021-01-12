@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "slim/slim": "3.11.0",
+        "slim/slim": "4.7.1",
         "guzzlehttp/guzzle": "6.5.5"
     }
 }
