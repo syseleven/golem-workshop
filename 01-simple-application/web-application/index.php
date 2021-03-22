@@ -1,17 +1,19 @@
 <?php
-
-use \Slim\Http\Request;
-use \Slim\Http\Response;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$app = new \Slim\App();
+$app = AppFactory::create();
 
-$app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write('<h1>Hello world</h1>');
+$app->get('/', function (Request $request, Response $response, $args) {
+    $response->getBody()->write("Hello world!");
     return $response;
 });
+
 $app->get('/health', function (Request $request, Response $response) {
     return $response->withStatus(200);
 });
+
 $app->run();

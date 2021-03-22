@@ -23,6 +23,9 @@ kubectl apply -f basic-auth.yaml
 kubectl apply -f linkerd-ingress.yaml
 ```
 
+* Add linkerd-viz extension
+linkerd viz install | kubectl apply -f -
+
 * Inject LinkerD proxy into existing deployments
 
 Add the "linkerd.io/inject: enabled" anntation to pods
@@ -41,3 +44,7 @@ kubectl get deployments -o yaml | linkerd inject - | kubectl apply -f -
 ```
 
 * Check LinkerD dashboard
+
+linkerd viz dashboard &
+kubectl -n ingress-nginx get deployments -o yaml | linkerd inject - | kubectl apply -f -
+
