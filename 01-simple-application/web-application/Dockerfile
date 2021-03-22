@@ -1,10 +1,10 @@
-FROM composer AS composer
+FROM composer:2.0.11 AS composer
 
 COPY composer.* /app/
 
 RUN composer install
 
-FROM php:7.4-apache
+FROM php:8.0-apache
 
 RUN a2enmod rewrite
 

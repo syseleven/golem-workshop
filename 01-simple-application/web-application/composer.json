@@ -9,6 +9,8 @@
     ],
     "require": {
         "slim/slim": "4.7.1",
-        "guzzlehttp/guzzle": "6.5.5"
+        "guzzlehttp/guzzle": "7.2.0",
+        "guzzlehttp/psr7": "1.8.1",
+        "http-interop/http-factory-guzzle": "1.0.0"
     }
 }
