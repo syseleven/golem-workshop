@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-prom-bundle": "^6.0.0",
-    "nodemon": "^2.0.4",
+    "nodemon": "^3.0.0",
     "prom-client": "^14.0.0",
     "random-quote": "0.0.1"
   }
