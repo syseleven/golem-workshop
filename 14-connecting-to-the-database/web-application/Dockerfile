@@ -4,7 +4,7 @@ COPY composer.* /app/
 
 RUN composer install
 
-FROM php:8.0-apache
+FROM php:8.3-apache
 
 RUN a2enmod rewrite
 
